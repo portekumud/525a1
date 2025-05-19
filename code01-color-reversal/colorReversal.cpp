@@ -12,21 +12,54 @@
 
 using namespace std;
 
-void f01_read_input(vector<vector<int>> &v2);
-void f02_local_complementation(vector<vector<int>> &v2, int a);
-void f03_color_reversal();
+void f01_read_input(vector<vector<int>> &);
+void f02_extractIntegerWords(string str,vector<vector<int>> &); 
+void f03_local_complementation(vector<vector<int>> &, int);
+void f04_color_reversal();
 
 int main(int argc, char **argv) {
 	vector<vector<int>> v2;
 	int a = 0;
 	f01_read_input(v2);
-	f02_local_complementation(v2, a);
-	f03_color_reversal();
+	f03_local_complementation(v2, a);
+	f04_color_reversal();
 
 	return 0;
 }
 
-void extractIntegerWords(string str,vector<vector<int>> &v2) {
+void f01_read_input(vector<vector<int>> &v2) {
+	//cout << endl << "In read input:  " << fileName[1] << endl;
+    	//vector<vector<int>> v2;
+        //vector<int> v1;
+	
+	std::ifstream file("input01");
+
+	if (file.is_open()) {
+		std::string line;
+		
+		//v1.clear();
+		
+		while (std::getline(file, line)) {
+			std::cout << line << std::endl;
+			//v1.push_back(line);
+			//
+			f02_extractIntegerWords(line, v2);
+
+
+	//	    v2.push_back({7, 8, 9});
+
+		}
+		file.close();
+
+	} else {
+		std::cerr << "Unable to open file." << std::endl;
+	}
+
+    
+	return;
+}
+
+void f02_extractIntegerWords(string str,vector<vector<int>> &v2) {
     stringstream ss;
     
     vector<int> v1;
@@ -66,39 +99,7 @@ void extractIntegerWords(string str,vector<vector<int>> &v2) {
 
 }
 
-void f01_read_input(vector<vector<int>> &v2) {
-	//cout << endl << "In read input:  " << fileName[1] << endl;
-    	//vector<vector<int>> v2;
-        //vector<int> v1;
-	
-	std::ifstream file("input01");
-
-	if (file.is_open()) {
-		std::string line;
-		
-		//v1.clear();
-		
-		while (std::getline(file, line)) {
-			std::cout << line << std::endl;
-			//v1.push_back(line);
-			//
-			extractIntegerWords(line, v2);
-
-
-	//	    v2.push_back({7, 8, 9});
-
-		}
-		file.close();
-
-	} else {
-		std::cerr << "Unable to open file." << std::endl;
-	}
-
-    
-	return;
-}
-
-void f02_local_complementation(vector<vector<int>> &v2, int a) {
+void f03_local_complementation(vector<vector<int>> &v2, int a) {
 	cout << endl << "In f02_local_complementation";
 	cout << endl << "Print v2 and a" << endl;
 	
@@ -152,7 +153,7 @@ void f02_local_complementation(vector<vector<int>> &v2, int a) {
 	return;
 }
 
-void f03_color_reversal() {
+void f04_color_reversal() {
 	cout << endl << "In f03_color_reversal";
 	return;
 }
