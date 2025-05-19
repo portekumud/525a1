@@ -123,7 +123,7 @@ void f02_local_complementation(vector<vector<int>> &v2, int a) {
 
 	for(x = 0; x <= 4; x++) {
 		if(v2[a][x] == 1) {
-			arr.push_back(x)
+			arr.push_back(x);
 			
 			//arr[i++] = x;
 		}
