@@ -1,11 +1,15 @@
-runMyCode:
-	echo "if test -f a.out; then" > runMyColorReversalCode.sh
-	echo "	#echo \"File exists.\"" >> runMyColorReversalCode.sh
-	echo "	rm a.out" >> runMyColorReversalCode.sh
-	echo "else" >> runMyColorReversalCode.sh
-	echo "	echo \"File does not exist.\"" >> runMyColorReversalCode.sh
-	echo "fi" >> runMyColorReversalCode.sh
-	echo "g++ colorReversal.cpp" >> runMyColorReversalCode.sh
-	echo "./a.out" >> runMyColorReversalCode.sh
-	clear
-	bash runMyColorReversalCode.sh
+runIt:
+	
+	#python3 -m venv env01-kumud-localComplementation
+	echo "import networkx as nx " > graph01-initial.py
+	echo "import matplotlib.pyplot as plt " >> graph01-initial.py
+	echo "G = nx.Graph() " >> graph01-initial.py
+	echo "plt.figure(figsize =(9, 12)) " >> graph01-initial.py
+	./a.out ../input 
+	echo "" >> graph01-initial.py
+	echo "plt.subplot(211) " >> graph01-initial.py
+	echo "print(\"The original Graph\") " >> graph01-initial.py
+	echo "nx.draw_networkx(G) " >> graph01-initial.py
+	echo "plt.savefig('graph01-initial.png')" >> graph01-initial.py 
+	g++ kumud_localComplementation.cpp
+	python3 graph01-initial.py 
