@@ -11,22 +11,27 @@
 
 
 
+
 using namespace std;
 
 void f01_read_input(vector<vector<int>> &, vector<int> &, char *);
 void f02_extractIntegerWords(string str,vector<vector<int>> &);
-void f03_local_complementation(vector<vector<int>> &, int);
+void f03_local_complementation(vector<vector<int>> &, int, 	vector<vector<int>> &, vector<int>);
 void f04_color_reversal();
 void f05_showMyGraph(vector<vector<int>> &, vector<int> &myBicoloration);
+void f06_drawGraph(vector<vector<int>>, vector<int>, string, string);
+
+
 
 int main(int argc, char **argv) {
 	vector<vector<int>> theGraph;
 	vector<int> theBicoloration;
-	int a = 0;
+	vector<vector<int>> myNewGraph;
+
+	int a = 2;
 	f01_read_input(theGraph, theBicoloration, *(argv + 1));
 
-	//f05_showMyGraph(theGraph);
-	//f03_local_complementation(theGraph, a);
+	f03_local_complementation(theGraph, a, myNewGraph, theBicoloration);
 	//f04_color_reversal();
 
 
@@ -141,7 +146,7 @@ void f01_read_input(vector<vector<int>> &myGraph, vector<int> &myBicoloration, c
 
 	cout << endl << "yahoo 1" << endl;
 	f05_showMyGraph(myGraph, myBicoloration);
-
+	f06_drawGraph(myGraph, myBicoloration, "01", "initial");
 
 
 
@@ -177,8 +182,8 @@ void f02_extractIntegerWords(string str,vector<vector<int>> &v2) {
     cout << endl << "Yahoo 2" << endl;
 
     cout << endl << "printing vector: " << endl;
-    for (int i = 0; i < v2.size(); i++) {
-	    for (int j = 0; j < v2[i].size(); j++) {
+    for (unsigned int i = 0; i < v2.size(); i++) {
+	    for (unsigned int j = 0; j < v2[i].size(); j++) {
 		    cout << v2[i][j] << " ";
 	    }
 
@@ -189,7 +194,20 @@ void f02_extractIntegerWords(string str,vector<vector<int>> &v2) {
 
 }
 
-void f03_local_complementation(vector<vector<int>> &myGraph, int a) {
+void f03_local_complementation(vector<vector<int>> &myGraph, int a, vector<vector<int>> &myNewGraph, vector<int> theBicoloration) {
+
+	vector<int> theNeighborsOfA;
+	vector<int>::iterator p1_myGraphSingle;
+	vector<vector<int>>::iterator p1_myGraphDouble;
+	vector<int>::iterator p2_theNeighborsOfA;
+	vector<int>::iterator p3_theNeighborsOfA;
+	vector<vector<int>> ::iterator p4_theLCtoDo;
+	vector<vector<int>> theLCtoDo;
+	vector<vector<int>>::iterator p5_myNewGraph;
+	vector<int> temp1, temp2;
+
+	int i = 0;
+
 	cout << endl << "In f02_local_complementation";
 	cout << endl << "Print v2 and a" << endl;
 
@@ -202,27 +220,103 @@ void f03_local_complementation(vector<vector<int>> &myGraph, int a) {
     }
 
 
+	p1_myGraphSingle = myGraph[a].begin();
+
 
 	cout << endl << "Value of a: " << a << endl;
+	cout << endl << "Neighbors of a: ";
 
-	//kumud start
-
-	//int arr[3];
-	vector<int> arr;
-	int i = 0;
-	int x;
-
-	for(x = 0; x <= 4; x++) {
-		if(myGraph[a][x] == 1) {
-			arr.push_back(x);
-
-			//arr[i++] = x;
+	while(p1_myGraphSingle != myGraph[a].end()) {
+		if(*p1_myGraphSingle == 1) {
+			cout << "One at " << i << endl;
+			theNeighborsOfA.push_back(i);
 		}
+		p1_myGraphSingle++;
+		i++;
+	}
+
+	//for(p2_theNeighborsOfA = theNeighborsOfA.begin(), p3_theNeighborsOfA = theNeighborsOfA.begin(); p2_theNeighborsOfA != theNeighborsOfA.end(), p3_theNeighborsOfA != theNeighborsOfA; p2_theNeighborsOfA++, p3_theNeighborsOfA++) {
+	for(p2_theNeighborsOfA = theNeighborsOfA.begin(); p2_theNeighborsOfA != theNeighborsOfA.end(); p2_theNeighborsOfA++) {
+		for(p3_theNeighborsOfA =theNeighborsOfA.begin(); p3_theNeighborsOfA != theNeighborsOfA.end(); p3_theNeighborsOfA++) {
+			if (*p2_theNeighborsOfA < *p3_theNeighborsOfA) {
+
+		cout << *p2_theNeighborsOfA << " : " << *p3_theNeighborsOfA << endl;
+		//theLCtoDo.push_back(__x)
+		temp1.push_back(*p2_theNeighborsOfA);
+		temp1.push_back(*p3_theNeighborsOfA);
+		theLCtoDo.push_back(temp1);
+		temp1.clear();
+			}
+		}
+		cout << endl;
 	}
 
 
 
+for(p1_myGraphDouble = myGraph.begin(); p1_myGraphDouble != myGraph.end(); p1_myGraphDouble++) {
+	vector<int> oneRow = *p1_myGraphDouble;
+	for(vector<int>::iterator p2_oneRow = (*p1_myGraphDouble).begin(); p2_oneRow != (*p1_myGraphDouble).end(); p2_oneRow++) {
+		cout << *p2_oneRow << " ";
+		temp2.push_back(*p2_oneRow);
+
+	}
+	myNewGraph.push_back(temp2);
+	temp2.clear();
+	cout << endl << "***" << endl;
+}
+
+
+
+
+
+
+
+
+	p1_myGraphDouble = myGraph.begin();
+	for(p4_theLCtoDo = theLCtoDo.begin(); p4_theLCtoDo != theLCtoDo.end(); p4_theLCtoDo++) {
+		cout << endl  << "---------" << endl << (*p4_theLCtoDo)[0] << " - " << (*p4_theLCtoDo)[1] << endl;
+
+
+		if(p1_myGraphDouble[(*p4_theLCtoDo)[0]][(*p4_theLCtoDo)[1]] == 1) {
+			cout << ": conected. Change it" << endl;
+			myNewGraph[(*p4_theLCtoDo)[0]][(*p4_theLCtoDo)[1]] = 0;
+		}
+		else {
+			cout << ": Not conected. Change it" << endl;
+			myNewGraph[(*p4_theLCtoDo)[0]][(*p4_theLCtoDo)[1]] = 1;
+				}
+
+		if(p1_myGraphDouble[(*p4_theLCtoDo)[1]][(*p4_theLCtoDo)[0]] == 1) {
+					cout << ": conected. Change it" << endl;
+					myNewGraph[(*p4_theLCtoDo)[1]][(*p4_theLCtoDo)[0]] = 0;
+				}
+				else {
+					cout << ": Not conected. Change it" << endl;
+					myNewGraph[(*p4_theLCtoDo)[1]][(*p4_theLCtoDo)[0]] = 1;
+				}
+	}
+
+
+
+
+
+	//kumud start
+
+	//int arr[3];
+
+	//f05_showMyGraph(myGraph, theBicoloration);
+
+	//f05_showMyGraph(myNewGraph, theBicoloration);
+
+	f06_drawGraph(myNewGraph, theBicoloration, "02", "afterLocalCom");
+
+
+
+
+
 	//kumud end
+
+
 
 
 
@@ -277,6 +371,102 @@ void f05_showMyGraph(vector<vector<int>> &myGraph, vector<int> &myBicoloration) 
 	}
 
 	cout << "Showing color" << endl;
+
+	p2 = myBicoloration.begin();
+	while(p2 != myBicoloration.end()) {
+		cout << *p2 << " ";
+		p2++;
+	}
+	return;
+}
+
+void f06_drawGraph(vector<vector<int>> myGraph, vector<int> myBicoloration, string nameIndex, string nameTitle) {
+	vector<vector<int>>::iterator p1_myGraph;
+	string name = "graph" + nameIndex + "-" + nameTitle + ".py";
+	vector<int>::iterator p2;
+	int i = 0, j, k = 0;
+	//ofstream file("graph01-initial.py");
+
+
+    std::ofstream file(name);
+
+
+
+	cout << endl << "In f06_drawGrap. name: " << name;
+
+
+	p1_myGraph = myGraph.begin();
+	//k = myGraph.size();
+	//cout << "k is: " << k;
+
+	file << "import networkx as nx" << endl;
+	file << "import matplotlib.pyplot as plt" << endl;
+	file << "G = nx.Graph() " << endl;
+	file << "plt.figure(figsize =(9, 12))" << endl;
+	file << "G.add_edges_from([";
+
+
+
+	while(p1_myGraph != myGraph.end()) {
+			cout << endl << "Hy" << endl;
+			cout << "ok" << (*p1_myGraph)[0] << " : ";
+			//temp1 = *p1_myGraph;
+			p2 = (*p1_myGraph).begin();
+			j = 0;
+			while(p2 != (*p1_myGraph).end()) {
+
+
+
+
+				if (*p2 == 1) {
+
+					if (k == 0) {
+						cout << " (one: " << i << ", " << j << " :one) ";
+											file << "(" << i << ", " << j << ")";
+											k++;
+					}
+					else {
+
+
+					cout << " (one: " << i << ", " << j << " :one) ";
+					file << ", (" << i << ", " << j << ")";
+				}
+				}
+				cout << "p2: " << *p2 << endl;
+				p2++;
+				j++;
+			}
+			p1_myGraph++;
+			i++;
+		}
+
+		cout << "Showing color" << endl;
+
+		p2 = myBicoloration.begin();
+		while(p2 != myBicoloration.end()) {
+			cout << *p2 << " ";
+			p2++;
+		}
+
+		file << "])";
+
+//		file << "#This is the graph.";
+	//	file << "#This is the graph.";
+
+		file <<  endl <<"plt.subplot(211)" << endl;
+		file << "nx.draw_networkx(G)" << endl;
+		file << "plt.savefig('graph";
+		file << nameIndex;
+		file << "-";
+		file << nameTitle;
+		file << ".png')" << endl;
+
+		file.close();
+
+
+
+
+
 	return;
 }
 
