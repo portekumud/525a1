@@ -16,6 +16,10 @@ void f04_color_reversal();
 void f05_showMyGraph(vector<vector<int>> &, vector<int> &myBicoloration);
 void f06_drawGraph(vector<vector<int>>, vector<int>, string, string);
 void f07_gen_len(int, string &, string &, vector<string> &);
+void f08_createLexicograohicalStringsUptoLengthN(vector<string> &, int);
+
+
+
 
 
 int main(int argc, char **argv) {
@@ -26,9 +30,7 @@ int main(int argc, char **argv) {
 	vector<int> theNeighborsOfA;
 	string a;
 	vector<string> setOfAllLexicographicallyStrings;
-	vector<string>::iterator p1_setOfAllLexicographicallyStrings;
 	int theNumberOfVertices;
-	string firstString = "";
 
 
 
@@ -37,37 +39,16 @@ int main(int argc, char **argv) {
 
 
 	/////////////////////////////////////////
-	for(int i = 0; i < theNumberOfVertices; i++) {
-		//std::cout << i;
-		firstString = firstString + to_string(i);
-	}
-	std::cout << "firstString: " << firstString << endl;
 
-	string ALPHABET2 = "01234";
-	int n;
-		    /*std::cout << "Enter maximum length n: ";
-		    if (!(std::cin >> n) || n <= 0)
-		    	return 0;
-*/
-		    std::string current;
-		    for (int len = 1; len <= theNumberOfVertices; ++len) {
-		        std::cout << "\nLength " << len << ":\n";
-		      f07_gen_len(len, current, firstString, setOfAllLexicographicallyStrings);
-		        // void gen_len(int, string &, string &);
 
-		        std::cout << '\n';   // end of this length group
-		    }
 
-		    cout << "The setOfAllLexicographicallyStrings: ";
-		    p1_setOfAllLexicographicallyStrings = setOfAllLexicographicallyStrings.begin();
-		    while(p1_setOfAllLexicographicallyStrings != setOfAllLexicographicallyStrings.end()) {
-		    	std::cout << *p1_setOfAllLexicographicallyStrings << " ";
-		    	p1_setOfAllLexicographicallyStrings++;
+	f08_createLexicograohicalStringsUptoLengthN(setOfAllLexicographicallyStrings, theNumberOfVertices);
 
-		    }
+
+	//string ALPHABET2 = "01234";
 	    /////////////////////////////////
 
-	a = "041";
+	a = "031";
 	f03_local_complementation(theGraph, a, myNewGraph, theBicoloration, theNeighborsOfA, theNewBicoloration);
 	//f04_color_reversal();
 
@@ -577,5 +558,48 @@ void f07_gen_len(int target_len, string &current, string &ALPHABET, vector<strin
 
         current.pop_back();   // back-track
     }
+    return;
 }
 
+
+void f08_createLexicograohicalStringsUptoLengthN(vector<string> &setOfAllLexicographicallyStrings, int theNumberOfVertices) {
+	int n;
+	string ALPHABET = "";
+
+
+
+	for(int i = 0; i < theNumberOfVertices; i++) {
+		//std::cout << i;
+		ALPHABET = ALPHABET + to_string(i);
+	}
+
+	std::cout << "ALPHABET: " << ALPHABET << endl;
+
+
+
+	vector<string>::iterator p1_setOfAllLexicographicallyStrings;
+
+		    std::cout << "Enter maximum length n: ";
+		    if (!(std::cin >> n) || n <= 0)
+		    	return;
+
+		    std::string current;
+		    for (int len = 1; len <= n; ++len) {
+		        std::cout << "\nLength " << len << ":\n";
+		      f07_gen_len(len, current, ALPHABET, setOfAllLexicographicallyStrings);
+		        // void gen_len(int, string &, string &);
+
+		        std::cout << '\n';   // end of this length group
+		    }
+
+		    cout << "The setOfAllLexicographicallyStrings: ";
+		    p1_setOfAllLexicographicallyStrings = setOfAllLexicographicallyStrings.begin();
+		    while(p1_setOfAllLexicographicallyStrings != setOfAllLexicographicallyStrings.end()) {
+		    	std::cout << *p1_setOfAllLexicographicallyStrings << " ";
+		    	p1_setOfAllLexicographicallyStrings++;
+
+		    }
+		    cout << endl;
+		    return;
+
+}
