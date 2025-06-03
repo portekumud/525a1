@@ -47,16 +47,21 @@ cd 01-lcOnAsingleVertex/
 Then type
 
 ```shell
+make clean
+```
+
+to remove the unnecessary files generated from the last execution.
+
+
+Now run
+
+```shell
 make -s
 ```
+
 to run the code inside directory `01-lcOnAsingleVertex/`. Once successfully executed, it will create following two graphs:
 
 -   the _initial graph_, and
 -   the _graph_ after _local complementation_ on the _mentioned vertex_.
 
-Now run the following command to view them:
-
-```shell
-evince graph01-initial.pdf && evince graph02-afterLocalCom.pdf
-```
-
+and the two graphs are visible.

@@ -18,5 +18,11 @@ runIt:
 	#python3 graph01-initial.py
 	python3 graph01-initial.py 
 	python3 graph02-afterLocalCom.py 
-	#display graph01-initial.png & 
-	#display graph02-afterLocalCom.png &
+	evince graph01-initial.pdf &
+	evince graph02-afterLocalCom.pdf &
+clean:
+	rm a.out
+	rm graph01-initial.pdf
+	rm graph01-initial.py
+	rm graph02-afterLocalCom.pdf
+	rm graph02-afterLocalCom.py

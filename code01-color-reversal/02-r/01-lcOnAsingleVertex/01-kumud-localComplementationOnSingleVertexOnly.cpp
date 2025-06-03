@@ -48,7 +48,7 @@ int main(int argc, char **argv) {
 	//string ALPHABET2 = "01234";
 	    /////////////////////////////////
 
-	a = "0";
+	a = "2";
 	f03_local_complementation(theGraph, a, myNewGraph, theBicoloration, theNeighborsOfA, theNewBicoloration);
 	//f04_color_reversal();
 
@@ -535,7 +535,7 @@ void f06_drawGraph(vector<vector<int>> myGraph, vector<int> myBicoloration, stri
 		file << nameIndex;
 		file << "-";
 		file << nameTitle;
-		file << ".png')" << endl;
+		file << ".pdf')" << endl;
 
 		file.close();
 
