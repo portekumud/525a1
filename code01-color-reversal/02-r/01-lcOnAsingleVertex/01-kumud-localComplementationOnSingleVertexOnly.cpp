@@ -48,7 +48,7 @@ int main(int argc, char **argv) {
 	//string ALPHABET2 = "01234";
 	    /////////////////////////////////
 
-	a = "2";
+	a = "3";
 	f03_local_complementation(theGraph, a, myNewGraph, theBicoloration, theNeighborsOfA, theNewBicoloration);
 	//f04_color_reversal();
 
