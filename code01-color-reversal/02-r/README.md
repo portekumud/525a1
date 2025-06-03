@@ -7,6 +7,7 @@ This directory contains implementation of local complementation.
     -   1.2 [Prerequisite for the second time onwards](#s12)
 2.  [List of directories](#s2)
 
+---
 
 # 1. Prerequisite <a name="s1"></a>
 
