@@ -42,13 +42,13 @@ int main(int argc, char **argv) {
 
 
 
-	f08_createLexicograohicalStringsUptoLengthN(setOfAllLexicographicallyStrings, theNumberOfVertices);
+	//f08_createLexicograohicalStringsUptoLengthN(setOfAllLexicographicallyStrings, theNumberOfVertices);
 
 
 	//string ALPHABET2 = "01234";
 	    /////////////////////////////////
 
-	a = "031";
+	a = "0";
 	f03_local_complementation(theGraph, a, myNewGraph, theBicoloration, theNeighborsOfA, theNewBicoloration);
 	//f04_color_reversal();
 
