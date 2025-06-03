@@ -2,7 +2,9 @@ This directory contains implementation of local complementation.
 
 
 
-# 1. Prerequisite for the first time execution
+# 1. Prerequisite 
+
+## 1.1 Prerequisite for the first time execution
 
 Execute the following command to create a _virtual environment_ for this experiment.
 
@@ -23,7 +25,15 @@ Once the mentioned environment is activated, we run the following command to ins
 bash script01-installPrerequisite.sh
 ```
 
-Done.
+Done. Please skip subsection 1.2 and go to section 2.
+
+## 1.2 Prerequisite for the second time onwards
+
+Execute the following command to enter into the _virtual environment_.
+
+```shell
+source env01-kumud-localComplementation/bin/activate
+```
 
 
 
