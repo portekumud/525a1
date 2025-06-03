@@ -31,7 +31,7 @@ Once the mentioned environment is activated, we run the following command to ins
 bash script01-installPrerequisite.sh
 ```
 
-Done. Please skip subsection 1.2 and go to section 2.
+Done. Please skip [subsection 1.2](#s12) and go to [section 2](#s2).
 
 ## 1.2 Prerequisite for the second time onwards <a name="s12"></a>
 
