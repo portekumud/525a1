@@ -6,6 +6,9 @@ This directory contains implementation of local complementation.
     -   1.1 [Prerequisite for the first time execution](#s11)
     -   1.2 [Prerequisite for the second time onwards](#s12)
 2.  [List of directories](#s2)
+    -   2.1 [Inside directory 01-lcOnAsingleVertex/](#s21)
+    -   2.2 [Inside directory 02-lcOnAsequenceOfVertices/](#s22)
+    -   2.3 [Inside directory 03-lcOnAsequenceOfLexicographicallySortedVertices/](#s23)
 
 ---
 
@@ -82,3 +85,11 @@ to run the code inside directory `01-lcOnAsingleVertex/`. Once successfully exec
 -   the _graph_ after _local complementation_ on the _mentioned vertex_.
 
 and the two graphs are visible.
+
+
+
+
+## 2.2 Inside directory 02-lcOnAsequenceOfVertices/<a name="s22"></a>
+
+
+## 2.3 Inside directory 03-lcOnAsequenceOfLexicographicallySortedVertices/<a name="s23"></a>
