@@ -1,5 +1,5 @@
 runIt:
-	
+	#source env01-kumud-localComplementation/bin/activate
 	#python3 -m venv env01-kumud-localComplementation
 	#source env01-kumud-localComplementation/bin/activate
 	#pip install networkx
@@ -18,3 +18,5 @@ runIt:
 	#python3 graph01-initial.py
 	python3 graph01-initial.py 
 	python3 graph02-afterLocalCom.py 
+	display graph01-initial.png & 
+	display graph02-afterLocalCom.png &

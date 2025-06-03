@@ -7,22 +7,15 @@
 #include <string>
 
 
-
-
-
-
-
-
 using namespace std;
 
-void f01_read_input(vector<vector<int>> &, vector<int> &, char *);
+void f01_read_input(vector<vector<int>> &, vector<int> &, char *, int &);
 void f02_extractIntegerWords(string str,vector<vector<int>> &);
 void f03_local_complementation(vector<vector<int>> &, string, 	vector<vector<int>> &, vector<int>, vector<int> &, vector<int> &);
 void f04_color_reversal();
 void f05_showMyGraph(vector<vector<int>> &, vector<int> &myBicoloration);
 void f06_drawGraph(vector<vector<int>>, vector<int>, string, string);
-
-void gen_len(int, string &, string &);
+void f07_gen_len(int, string &, string &, vector<string> &);
 
 
 int main(int argc, char **argv) {
@@ -32,31 +25,49 @@ int main(int argc, char **argv) {
 	vector<vector<int>> myNewGraph;
 	vector<int> theNeighborsOfA;
 	string a;
+	vector<string> setOfAllLexicographicallyStrings;
+	vector<string>::iterator p1_setOfAllLexicographicallyStrings;
+	int theNumberOfVertices;
+	string firstString = "";
+
+
+
+	f01_read_input(theGraph, theBicoloration, *(argv + 1), theNumberOfVertices);
+	std::cout << "theNumberOfVertices: " << theNumberOfVertices << endl;
 
 
 	/////////////////////////////////////////
+	for(int i = 0; i < theNumberOfVertices; i++) {
+		//std::cout << i;
+		firstString = firstString + to_string(i);
+	}
+	std::cout << "firstString: " << firstString << endl;
 
-
-	string ALPHABET = "01234";
+	string ALPHABET2 = "01234";
 	int n;
-		    std::cout << "Enter maximum length n: ";
-		    if (!(std::cin >> n) || n <= 0) return 0;
-
+		    /*std::cout << "Enter maximum length n: ";
+		    if (!(std::cin >> n) || n <= 0)
+		    	return 0;
+*/
 		    std::string current;
-		    for (int len = 1; len <= n; ++len) {
+		    for (int len = 1; len <= theNumberOfVertices; ++len) {
 		        std::cout << "\nLength " << len << ":\n";
-		      gen_len(len, current, ALPHABET);
+		      f07_gen_len(len, current, firstString, setOfAllLexicographicallyStrings);
 		        // void gen_len(int, string &, string &);
 
 		        std::cout << '\n';   // end of this length group
 		    }
 
+		    cout << "The setOfAllLexicographicallyStrings: ";
+		    p1_setOfAllLexicographicallyStrings = setOfAllLexicographicallyStrings.begin();
+		    while(p1_setOfAllLexicographicallyStrings != setOfAllLexicographicallyStrings.end()) {
+		    	std::cout << *p1_setOfAllLexicographicallyStrings << " ";
+		    	p1_setOfAllLexicographicallyStrings++;
 
+		    }
 	    /////////////////////////////////
 
-	a = "0";
-	f01_read_input(theGraph, theBicoloration, *(argv + 1));
-
+	a = "041";
 	f03_local_complementation(theGraph, a, myNewGraph, theBicoloration, theNeighborsOfA, theNewBicoloration);
 	//f04_color_reversal();
 
@@ -66,7 +77,7 @@ int main(int argc, char **argv) {
 	return 0;
 }
 
-void f01_read_input(vector<vector<int>> &myGraph, vector<int> &myBicoloration, char *theFilename) {
+void f01_read_input(vector<vector<int>> &myGraph, vector<int> &myBicoloration, char *theFilename, int &theNumberOfVertices) {
 	//cout << endl << "In read input:  " << fileName[1] << endl;
     	//vector<vector<int>> v2;
         //vector<int> v1;
@@ -78,12 +89,6 @@ void f01_read_input(vector<vector<int>> &myGraph, vector<int> &myBicoloration, c
 	std::ifstream readFile(theFilename);
 
 	//cout << "theFilename: " << theFilename;
-
-
-
-
-
-
 
 	cout << "Hy 2" << endl;
 
@@ -171,6 +176,7 @@ void f01_read_input(vector<vector<int>> &myGraph, vector<int> &myBicoloration, c
 
 
 	cout << endl << "yahoo 1" << endl;
+	theNumberOfVertices = myBicoloration.size();
 	f05_showMyGraph(myGraph, myBicoloration);
 	f06_drawGraph(myGraph, myBicoloration, "01", "initial");
 
@@ -308,17 +314,6 @@ for(p1_myGraphDouble = myGraph.begin(); p1_myGraphDouble != myGraph.end(); p1_my
 		p6_theBicoloration++;
 	}
 
-
-
-
-
-
-
-
-
-
-
-
 	p1_myGraphDouble = myGraph.begin();
 	for(p4_theLCtoDo = theLCtoDo.begin(); p4_theLCtoDo != theLCtoDo.end(); p4_theLCtoDo++) {
 		cout << endl  << "---------" << endl << (*p4_theLCtoDo)[0] << " - " << (*p4_theLCtoDo)[1] << endl;
@@ -399,24 +394,6 @@ for(p1_myGraphDouble = myGraph.begin(); p1_myGraphDouble != myGraph.end(); p1_my
 
 
 	//kumud end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 	return;
 }
@@ -581,30 +558,21 @@ void f06_drawGraph(vector<vector<int>> myGraph, vector<int> myBicoloration, stri
 
 		file.close();
 
-
-
-
-
 	return;
 }
 
 
-
-
-
-
-
-
-void gen_len(int target_len, string &current, string &ALPHABET) {
+void f07_gen_len(int target_len, string &current, string &ALPHABET, vector<string> &setOfAllLexicographicallyStrings) {
     if (static_cast<int>(current.size()) == target_len) {
         std::cout << current << ' ';
+        setOfAllLexicographicallyStrings.push_back(current);
         return;
     }
 
     for (char c : ALPHABET) {
         current.push_back(c);
        // gen_len(target_len, current, ALPHABET);
-        gen_len(target_len, current, ALPHABET);
+        f07_gen_len(target_len, current, ALPHABET, setOfAllLexicographicallyStrings);
       //gen_len(int, string &, string &);
 
         current.pop_back();   // back-track
