@@ -1,10 +1,16 @@
 This directory contains implementation of local complementation.
 
+### Table of contents
+
+1.	[Prerequisite](#s1)
+    -   1.1 [Prerequisite for the first time execution](#s11)
+    -   1.2 [Prerequisite for the second time onwards](#s12)
+2.  [List of directories](#s2)
 
 
-# 1. Prerequisite 
+# 1. Prerequisite <a name="s1"></a>
 
-## 1.1 Prerequisite for the first time execution
+## 1.1 Prerequisite for the first time execution <a name="s11"></a>
 
 Execute the following command to create a _virtual environment_ for this experiment.
 
@@ -27,7 +33,7 @@ bash script01-installPrerequisite.sh
 
 Done. Please skip subsection 1.2 and go to section 2.
 
-## 1.2 Prerequisite for the second time onwards
+## 1.2 Prerequisite for the second time onwards <a name="s12"></a>
 
 Execute the following command to enter into the _virtual environment_.
 
@@ -37,7 +43,7 @@ source env01-kumud-localComplementation/bin/activate
 
 
 
-# 2. List of directories
+# 2. List of directories <a name="s2"></a>
 
 The following directories are present.
 
@@ -46,7 +52,7 @@ The following directories are present.
 -   03-lcOnAsequenceOfLexicographicallySortedVertices/
 
 
-## 2.1 Inside directory 01-lcOnAsingleVertex/
+## 2.1 Inside directory 01-lcOnAsingleVertex/ <a name="s21"></a>
 
 Execute the following code  to change the _present working directory_ as _01-lcOnAsingleVertex_.
 
