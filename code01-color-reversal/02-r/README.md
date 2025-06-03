@@ -2,15 +2,30 @@ This directory contains implementation of local complementation.
 
 
 
-# 1. Prerequisite
+# 1. Prerequisite for the first time execution
 
-Execute the following command to enter into a proper environment.
+Execute the following command to create a _virtual environment_ for this experiment.
+
+```shell
+python3 -m venv env01-kumud-localComplementation
+```
+
+
+Execute the following command to enter into the _virtual environment_.
 
 ```shell
 source env01-kumud-localComplementation/bin/activate
 ```
 
-Once the mentioned environment is activated, we can proceed for the following.
+Once the mentioned environment is activated, we run the following command to install some required packages:
+
+```shell
+bash script01-installPrerequisite.sh
+```
+
+Done.
+
+
 
 # 2. List of directories
 
@@ -44,3 +59,4 @@ Now run the following command to view them:
 ```shell
 evince graph01-initial.pdf && evince graph02-afterLocalCom.pdf
 ```
+
