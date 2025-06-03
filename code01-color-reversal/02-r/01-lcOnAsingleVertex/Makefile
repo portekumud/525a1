@@ -18,5 +18,5 @@ runIt:
 	#python3 graph01-initial.py
 	python3 graph01-initial.py 
 	python3 graph02-afterLocalCom.py 
-	display graph01-initial.png & 
-	display graph02-afterLocalCom.png &
+	#display graph01-initial.png & 
+	#display graph02-afterLocalCom.png &

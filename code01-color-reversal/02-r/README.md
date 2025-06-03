@@ -23,9 +23,24 @@ The following directories are present.
 
 ## 2.1 Inside directory 01-lcOnAsingleVertex/
 
-Execute `cd 01-lcOnAsingleVertex/` to change the _present working directory_ as _01-lcOnAsingleVertex_. Then type `make -s` to run the code inside directory `01-lcOnAsingleVertex/`. Once successfully executed, it will create the following two _dot png_ files:
+Execute the following code  to change the _present working directory_ as _01-lcOnAsingleVertex_.
 
+```shell
+cd 01-lcOnAsingleVertex/
+```
 
+Then type
 
--   
+```shell
+make -s
+```
+to run the code inside directory `01-lcOnAsingleVertex/`. Once successfully executed, it will create following two graphs:
 
+-   the _initial graph_, and
+-   the _graph_ after _local complementation_ on the _mentioned vertex_.
+
+Now run the following command to view them:
+
+```shell
+evince graph01-initial.pdf && evince graph02-afterLocalCom.pdf
+```
