@@ -23,18 +23,25 @@ kumud01:
 	#python3 graph01-initial.py
 	python3 graph01-initial.py 
 	python3 graph02-afterLocalCom.py 
-	#evince graph01-initial.pdf &
-	#evince graph02-afterLocalCom.pdf &
+	evince graph01-initial.pdf &
+	evince graph02-afterLocalCom.pdf &
 	
-	touch showOutput.sh
-	echo "evince graph01-initial.pdf &" >> showOutput.sh
-	echo "evince graph02-afterLocalCom.pdf &" >> showOutput.sh
+	touch script01-showOutput.sh
+	echo "okular graph01-initial.pdf &" >> script01-showOutput.sh
+	echo "okular graph02-afterLocalCom.pdf &" >> script01-showOutput.sh
 clean:
 	if [ -f $(a).out ]; then \
 		echo "$(a).out File exists."; \
 		rm $(a).out; \
 	else\
 		echo "$(a).out File does not exist."; \
+	fi
+	
+	if [ -f script01-showOutput.sh ]; then \
+		echo "Output viewer File exists."; \
+		rm script01-showOutput.sh; \
+	else\
+		echo "Output viwer file does not exist."; \
 	fi
 	
 	if [ -f $(graph01).pdf ]; then \

@@ -96,7 +96,7 @@ and the two graphs are visible.
 
 5. The two graphs should be visible automatically. Altenatively, we can use the following two commands to view the two graphs:
 
- We are done here.
+6.  We are done here.
 
 
 ## 2.2 Inside directory 02-lcOnAsequenceOfVertices/<a name="s22"></a>
