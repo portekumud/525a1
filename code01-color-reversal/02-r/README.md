@@ -61,13 +61,13 @@ The following directories are present.
 
 ## 2.1 Inside directory 01-lcOnAsingleVertex/ <a name="s21"></a>
 
-Execute the following code  to change the _present working directory_ as _01-lcOnAsingleVertex_.
+1.  Execute the following code  to change the _present working directory_ as _01-lcOnAsingleVertex_.
 
 ```shell
 cd 01-lcOnAsingleVertex/
 ```
 
-Then type
+2.  Then type
 
 ```shell
 make clean
@@ -76,7 +76,7 @@ make clean
 to remove the unnecessary files generated from the last execution.
 
 
-Now run to make _vertex q_ as the _pivot vertex_. Here _pivot vertex_ means that specific vertex on which _local complementation_ is supposed to be performed.
+3.  Now run the following code to do local complementation at _q_ which is the _pivot vertex_. Here _pivot vertex_ means that specific vertex on which _local complementation_ is supposed to be performed. You need to provide an integer value in the place of _q_.
 
 ```shell
 make kumud01 vertex=q
