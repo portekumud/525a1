@@ -35,6 +35,12 @@ int main(int argc, char **argv) {
 	string zeroToT1;
 
 
+	if(argc != 3) {
+		cout << "Mismatch run-time arguments. Read the usage from the Github and try again";
+		return 0;
+	}
+	else {
+	
 
 	f01_read_input(theGraph, theBicoloration, *(argv + 1), theNumberOfVertices);
 	f06_drawGraph(theGraph, theBicoloration, "0", "", "inputGraph");
@@ -58,7 +64,8 @@ int main(int argc, char **argv) {
 
 	cout << endl << endl << "CAll ittttttt" << endl;
 
-	a = "201";
+	//a = "201";
+	a = *(argv + 2);
 
 	for(unsigned int i = 0; i < a.length(); i++) {
 		cout << endl;
@@ -87,7 +94,7 @@ int main(int argc, char **argv) {
 
 
 	//cout << endl << "Test arguments: " << argc << ": " << *(argv + 0) << *(argv + 1);
-
+}
 	return 0;
 }
 
