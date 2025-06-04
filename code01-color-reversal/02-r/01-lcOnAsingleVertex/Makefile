@@ -27,6 +27,7 @@ kumud01:
 	evince graph02-afterLocalCom.pdf &
 	
 	touch script01-showOutput.sh
+	echo "#!"/"bin"/"bash" > script01-showOutput.sh
 	echo "okular graph01-initial.pdf &" >> script01-showOutput.sh
 	echo "okular graph02-afterLocalCom.pdf &" >> script01-showOutput.sh
 clean:
