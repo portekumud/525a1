@@ -19,30 +19,30 @@ This directory contains implementation of local complementation.
 
 ## 1.1 Prerequisite for the first time execution <a name="s11"></a>
 
-Execute the following command to create a _virtual environment_ for this experiment.
+1.  Execute the following command to create a _virtual environment_ for this experiment.
 
 ```shell
 python3 -m venv env01-kumud-localComplementation
 ```
 
-
-Execute the following command to enter into the _virtual environment_.
+2.  Then execute the following command to enter into the _virtual environment_.
 
 ```shell
 source env01-kumud-localComplementation/bin/activate
 ```
 
-Once the mentioned environment is activated, we run the following command to install some required packages:
+3.  Once the mentioned environment is activated, we run the following command to install some required packages:
 
 ```shell
 bash script01-installPrerequisite.sh
 ```
 
-Done. Please skip [subsection 1.2](#s12) and go to [section 2](#s2).
+4.  Done, please skip [subsection 1.2](#s12) and go to [section 2](#s2).
 
 ## 1.2 Prerequisite for the second time onwards <a name="s12"></a>
 
-Execute the following command to enter into the _virtual environment_.
+
+1.  Execute the following command to enter into the _virtual environment_.
 
 ```shell
 source env01-kumud-localComplementation/bin/activate
@@ -76,10 +76,10 @@ make clean
 to remove the unnecessary files generated from the last execution.
 
 
-3.  Now run the following code to do local complementation at _q_ which is the _pivot vertex_. Here _pivot vertex_ means that specific vertex on which _local complementation_ is supposed to be performed. We need to provide an integer value in the place of _q_.
+3.  Now run the following code to do _local complementation_ at vertex _q_ of input graph _p_. Note that here _q_ is the _pivot vertex_. Here _pivot vertex_ means that specific vertex on which _local complementation_ is supposed to be performed. We need to provide an integer value in the place of _q_.
 
 ```shell
-make kumud01 vertex=q
+make  kumud01 input=p vertex=q
 ```
 
 > [!CAUTION] 
@@ -107,3 +107,4 @@ bash script01-showOutput.sh
 
 
 ## 2.3 Inside directory 03-lcOnAsequenceOfLexicographicallySortedVertices/<a name="s23"></a>
+

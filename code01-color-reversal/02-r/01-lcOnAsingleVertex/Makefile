@@ -1,7 +1,7 @@
 graph01=graph01-initial
 graph02=graph02-afterLocalCom
 a=a
-
+script=script01-showOutput
 
 kumud01:
 	#source env01-kumud-localComplementation/bin/activate
@@ -19,8 +19,7 @@ kumud01:
 	#echo "nx.draw_networkx(G) " >> graph01-initial.py
 	#echo "plt.savefig('graph01-initial.png')" >> graph01-initial.py 
 	g++ 01-kumud-localComplementationOnSingleVertexOnly.cpp
-	./a.out ../input/input1 $(vertex) 
-	#python3 graph01-initial.py
+	./a.out ../input/$(input) $(vertex) 
 	python3 graph01-initial.py 
 	python3 graph02-afterLocalCom.py 
 	evince graph01-initial.pdf &
@@ -32,45 +31,45 @@ kumud01:
 	echo "okular graph02-afterLocalCom.pdf &" >> script01-showOutput.sh
 clean:
 	if [ -f $(a).out ]; then \
-		echo "$(a).out File exists."; \
+		echo "$(a).out file exists."; \
 		rm $(a).out; \
 	else\
-		echo "$(a).out File does not exist."; \
-	fi
-	
-	if [ -f script01-showOutput.sh ]; then \
-		echo "Output viewer File exists."; \
-		rm script01-showOutput.sh; \
-	else\
-		echo "Output viwer file does not exist."; \
+		echo "$(a).out file does not exist."; \
 	fi
 	
 	if [ -f $(graph01).pdf ]; then \
-		echo "$(graph01).pdf File exists."; \
+		echo "$(graph01).pdf file exists."; \
 		rm $(graph01).pdf; \
 	else\
-		echo "$(graph01).pdf File does not exist."; \
+		echo "$(graph01).pdf file does not exist."; \
 	fi
 	
 	if [ -f $(graph01).py ]; then \
-		echo "$(graph01).py File exists."; \
+		echo "$(graph01).py file exists."; \
 		rm $(graph01).py; \
 	else\
-		echo "$(graph01).py File does not exist."; \
+		echo "$(graph01).py file does not exist."; \
 	fi
 	
 	if [ -f $(graph02).pdf ]; then \
-		echo "$(graph02).pdf File exists."; \
+		echo "$(graph02).pdf file exists."; \
 		rm $(graph02).pdf; \
 	else\
-		echo "$(graph02).pdf File does not exist."; \
+		echo "$(graph02).pdf file does not exist."; \
 	fi
 	
 	if [ -f $(graph02).py ]; then \
-		echo "$(graph02).py File exists."; \
+		echo "$(graph02).py file exists."; \
 		rm $(graph02).py; \
 	else\
-		echo "$(graph02).py File does not exist."; \
+		echo "$(graph02).py file does not exist."; \
+	fi
+	
+	if [ -f $(script).sh ]; then \
+		echo "$(script).sh file exists."; \
+		rm $(script).sh; \
+	else\
+		echo "$(script).sh file does not exist."; \
 	fi
 
 
