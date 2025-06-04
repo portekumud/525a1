@@ -33,6 +33,12 @@ int main(int argc, char **argv) {
 	int theNumberOfVertices;
 
 
+	if(argc != 3) {
+		cout << "Mismatch run-time arguments. Read the usage from the Github and try again";
+		return 0;
+	}
+	else {
+	
 
 	f01_read_input(theGraph, theBicoloration, *(argv + 1), theNumberOfVertices);
 	std::cout << "theNumberOfVertices: " << theNumberOfVertices << endl;
@@ -48,13 +54,20 @@ int main(int argc, char **argv) {
 	//string ALPHABET2 = "01234";
 	    /////////////////////////////////
 
-	a = "3";
+	a = *(argv + 2);
+
+	if(0 <= stoi(a) && stoi(a) <= theNumberOfVertices - 1) {
 	f03_local_complementation(theGraph, a, myNewGraph, theBicoloration, theNeighborsOfA, theNewBicoloration);
 	//f04_color_reversal();
+	}
+	else {
 
+		cout << "The graph has " << theNumberOfVertices << " vertices. You entered vertex index as " << a << ". It is incorrect vertex index.";
+
+	}
 
 	//cout << endl << "Test arguments: " << argc << ": " << *(argv + 0) << *(argv + 1);
-
+}
 	return 0;
 }
 

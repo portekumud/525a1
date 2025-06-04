@@ -76,11 +76,14 @@ make clean
 to remove the unnecessary files generated from the last execution.
 
 
-Now run
+Now run to make _vertex q_ as the _pivot vertex_. Here _pivot vertex_ means that specific vertex on which _local complementation_ is supposed to be performed.
 
 ```shell
-make -s
+make kumud01 vertex=q
 ```
+
+> [!NOTE]
+> The value of _q_ must belong to the set of vertices; otherwise this implementation stops. 
 
 to run the code inside directory `01-lcOnAsingleVertex/`. Once successfully executed, it will create following two graphs:
 
