@@ -82,8 +82,7 @@ to remove the unnecessary files generated from the last execution.
 make kumud01 vertex=q
 ```
 
-> [!NOTE]
-> The value of _q_ must belong to the set of vertices; otherwise this implementation stops. 
+> [!NOTE] The value of _q_ must belong to the set of vertices; otherwise this implementation stops. 
 
 4.  Once successfully executed, it will create following two graphs:
 
