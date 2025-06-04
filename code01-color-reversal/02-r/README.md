@@ -76,7 +76,7 @@ make clean
 to remove the unnecessary files generated from the last execution.
 
 
-3.  Now run the following code to do local complementation at _q_ which is the _pivot vertex_. Here _pivot vertex_ means that specific vertex on which _local complementation_ is supposed to be performed. You need to provide an integer value in the place of _q_.
+3.  Now run the following code to do local complementation at _q_ which is the _pivot vertex_. Here _pivot vertex_ means that specific vertex on which _local complementation_ is supposed to be performed. We need to provide an integer value in the place of _q_.
 
 ```shell
 make kumud01 vertex=q
@@ -94,7 +94,9 @@ make kumud01 vertex=q
 
 and the two graphs are visible.
 
+5. The two graphs should be visible automatically. Altenatively, we can use the following two commands to view the two graphs:
 
+ We are done here.
 
 
 ## 2.2 Inside directory 02-lcOnAsequenceOfVertices/<a name="s22"></a>
