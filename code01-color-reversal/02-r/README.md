@@ -94,7 +94,11 @@ make kumud01 vertex=q
 
 and the two graphs are visible.
 
-5. The two graphs should be visible automatically. Altenatively, we can use the following two commands to view the two graphs:
+5. The two graphs should be visible automatically. Altenatively, we can use the following command to view the two graphs:
+
+```shell
+bash script01-showOutput.sh
+```
 
 6.  We are done here.
 
