@@ -235,11 +235,13 @@ void f03_local_complementation(vector<vector<int>> &myGraph, string a11, vector<
 	int a;
 	vector<int>::iterator p6_theBicoloration;
 
-	lastChar = a11[a11.length() - 1];
+	//lastChar = a11[a11.length() - 1];
 
-	a = stoi(lastChar);
+	//a = stoi(lastChar);
 
-	cout << stoi(lastChar);
+	//cout << stoi(lastChar);
+	//
+	a = stoi(a11);
 
 
 	int i = 0;
