@@ -67,7 +67,7 @@ The following directories are present.
 cd 01-lcOnAsingleVertex/
 ```
 
-2.  Then type
+2.  Once we are inside the directory `01-lcOnAsingleVertex/`, we need to type
 
 ```shell
 make clean
@@ -85,7 +85,7 @@ make kumud01 vertex=q
 > [!NOTE]
 > The value of _q_ must belong to the set of vertices; otherwise this implementation stops. 
 
-to run the code inside directory `01-lcOnAsingleVertex/`. Once successfully executed, it will create following two graphs:
+4.  Once successfully executed, it will create following two graphs:
 
 -   the _initial graph_, and
 -   the _graph_ after _local complementation_ on the _mentioned vertex_.
