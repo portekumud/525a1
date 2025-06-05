@@ -8,7 +8,7 @@
 cd color-reversal-by-local-complementation/
 ```
 
-##  2. <a href="color-reversal-by-local-complementation/README.md">Color reversal by local complementation</a> 
+The documentation is available <a href="color-reversal-by-local-complementation/README.md">here</a>. 
 
 
 
