@@ -10,6 +10,7 @@ git clone git@github.com:portekumud/525a1.git
 2.  Change the _present working directory_ to the _working space_ by executing the following command:
 ```shell
 cd 525a1/
+```
 
 3.  Please run the following command to change the _present working directory_ to the _root dirctory_ for executing our implementation for _local complementation_.
 
