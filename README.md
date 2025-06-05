@@ -1,8 +1,9 @@
 # This repository contains the following implementations:
 
-##  1. Color reversal by local complementation
+##  1. <a href="color-reversal-by-local-complementation/README.md">Color reversal by local complementation</a> 
 
 
 
-<a href="color-reversal-by-local-complementation/README.md">link text</a>
+
+
 
