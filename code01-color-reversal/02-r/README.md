@@ -79,9 +79,10 @@ to remove the unnecessary files generated from the last execution.
 3.  Now run the following code to do _local complementation_ at vertex _q_ of input graph _p_. Note that here _q_ is the _pivot vertex_. Here _pivot vertex_ means that specific vertex on which _local complementation_ is supposed to be performed. We need to provide an integer value in the place of _q_.
 
 ```shell
-make  kumud01 input=p vertex=q
+make kumud01 input=../input/p vertex=q
 ```
 
+For example, run `make kumud01 input=../input/input3 vertex=4` to do _local complementation_ on the `4`th vertex of `input3` graph.
 > [!CAUTION] 
 > The value of _q_ must belong to the set of vertices; otherwise this implementation stops. 
 
