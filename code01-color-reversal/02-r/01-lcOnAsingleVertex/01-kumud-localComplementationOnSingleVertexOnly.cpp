@@ -260,6 +260,7 @@ void f04_drawGraph(vector<vector<int>> myGraph, vector<int> myBicoloration, stri
 		p2 = (*p1_myGraph).begin();
 		j = 0;
 		while(p2 != (*p1_myGraph).end()) {
+			cout << *p2 << " - ";
 			if (*p2 == 1) {
 				if (k == 0) {
 					file << "(" << i << ", " << j << ")";
@@ -272,6 +273,7 @@ void f04_drawGraph(vector<vector<int>> myGraph, vector<int> myBicoloration, stri
 			p2++;
 			j++;
 		}
+		cout << endl;
 		p1_myGraph++;
 		i++;
 	}
