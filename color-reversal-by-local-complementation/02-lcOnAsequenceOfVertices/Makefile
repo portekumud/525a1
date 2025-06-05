@@ -1,9 +1,12 @@
 graph01=graph01-initial
 graph02=graph02-afterLocalCom
 a=a
+file1=read.sh
+msg1=$
+line=line
+c="${msg1}${line}"
 
-
-runIt:
+kumud02:
 	#source env01-kumud-localComplementation/bin/activate
 	#python3 -m venv env01-kumud-localComplementation
 	#source env01-kumud-localComplementation/bin/activate
@@ -18,13 +21,38 @@ runIt:
 	#echo "print(\"The original Graph\") " >> graph01-initial.py
 	#echo "nx.draw_networkx(G) " >> graph01-initial.py
 	#echo "plt.savefig('graph01-initial.png')" >> graph01-initial.py 
-	g++ 01-kumud-localComplementationOnSingleVertexOnly.cpp
-	./a.out ../input/input1
+	g++ 02-kumud-localComplementationOnAsequenceOfVertices.cpp
+	#echo $(graph) $(sequence)
+	./a.out ../input/$(graph) "$(sequence)"
+	#echo "" > read.sh
+	if [ -f $(file1) ]; then \
+		rm $(file1); \
+		touch $(file1); \
+	else\
+		touch $(file1); \
+	fi
+	ls | grep .py >> listOfPythonFiles
+	echo "while read line; do" >> $(file1)
+	#rm j.txt
+	echo -n "	echo python3 " >> $(file1)
+	echo -n "\"" >> $(file1)
+	echo -n "$(msg1)" >> $(file1)
+	echo -n "line" >> $(file1)
+	echo -n "\"" >> $(file1)
+	echo -n " >> " >> $(file1)
+	echo "wao.sh" >> $(file1)
+	echo "	done < listOfPythonFiles" >>$(file1)
+	bash read.sh
+	bash wao.sh
+	#echo "	echo python3 \"$(msg1)$(line) $(ms2) a $(c)" >> $(file1)
+	#echo "${msg1}msg1" >> $(file1)
+
+	#echo "while read line; do" >> read.sh
 	#python3 graph01-initial.py
-	python3 graph01-initial.py 
-	python3 graph02-afterLocalCom.py 
-	evince graph01-initial.pdf &
-	evince graph02-afterLocalCom.pdf &
+	#python3 graph01-initial.py 
+	#python3 graph02-afterLocalCom.py 
+	#evince graph01-initial.pdf &
+	#evince graph02-afterLocalCom.pdf &
 clean:
 	if [ -f $(a).out ]; then \
 		echo "$(a).out File exists."; \

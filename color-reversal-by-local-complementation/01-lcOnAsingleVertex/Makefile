@@ -19,7 +19,7 @@ kumud01:
 	#echo "nx.draw_networkx(G) " >> graph01-initial.py
 	#echo "plt.savefig('graph01-initial.png')" >> graph01-initial.py 
 	g++ 01-kumud-localComplementationOnSingleVertexOnly.cpp
-	./a.out ../input/$(input) $(vertex) 
+	./a.out ../input/$(graph) $(vertex) 
 	python3 graph01-initial.py 
 	python3 graph02-afterLocalCom.py 
 	evince graph01-initial.pdf &
