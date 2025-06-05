@@ -116,7 +116,7 @@ void f01_read_input(vector<vector<int>> &myGraph, vector<int> &myBicoloration, c
 	p1_myGraph  = p1_myGraph - 1;
 	myGraph.erase(p1_myGraph, p1_myGraph + 1);
 	theNumberOfVertices = myBicoloration.size();
-	cout << "theNumberOfVertices: " << theNumberOfVertices << endl; 
+	//cout << "theNumberOfVertices: " << theNumberOfVertices << endl; 
 	f04_drawGraph(myGraph, myBicoloration, "01", "initial");
 
 	return;
@@ -229,6 +229,7 @@ void f03_local_complementation(vector<vector<int>> &myGraph, string a11, vector<
 		if(theNewBicoloration[*p2_theNeighborsOfA] == 1) {
 			theNewBicoloration[*p2_theNeighborsOfA] = -1;
 		}
+		
 		else if (theNewBicoloration[*p2_theNeighborsOfA] == -1) {
 			theNewBicoloration[*p2_theNeighborsOfA] = 1;
 		}
@@ -260,7 +261,7 @@ void f04_drawGraph(vector<vector<int>> myGraph, vector<int> myBicoloration, stri
 		p2 = (*p1_myGraph).begin();
 		j = 0;
 		while(p2 != (*p1_myGraph).end()) {
-			cout << *p2 << " - ";
+			//cout << *p2 << " - ";
 			if (*p2 == 1) {
 				if (k == 0) {
 					file << "(" << i << ", " << j << ")";
@@ -273,19 +274,19 @@ void f04_drawGraph(vector<vector<int>> myGraph, vector<int> myBicoloration, stri
 			p2++;
 			j++;
 		}
-		cout << endl;
+		//cout << endl;
 		p1_myGraph++;
 		i++;
 	}
 
 	p2 = myBicoloration.begin();
-	cout << endl << "==================" << endl;
-	cout << endl << "Again size: " << myBicoloration.size() << endl;
+	//cout << endl << "==================" << endl;
+	//cout << endl << "Again size: " << myBicoloration.size() << endl;
 	while(p2 != myBicoloration.end()) {
-		cout << *p2 << " *  ";
+		//cout << *p2 << " *  ";
 		p2++;
 	}
-	cout << endl << "==================" << endl;
+	//cout << endl << "==================" << endl;
 
 	file << "])";
 
