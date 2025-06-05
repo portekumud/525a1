@@ -9,9 +9,9 @@ This directory contains implementation of local complementation.
     -   1.1 [Prerequisite for the first time execution](#s11)
     -   1.2 [Prerequisite for the second time onwards](#s12)
 2.  [List of directories](#s2)
-    -   2.1 [Inside directory 01-lcOnAsingleVertex/](#s21)
-    -   2.2 [Inside directory 02-lcOnAsequenceOfVertices/](#s22)
-    -   2.3 [Inside directory 03-lcOnAsequenceOfLexicographicallySortedVertices/](#s23)
+    -   2.1 [Local complementation at a single vertex](#s21)
+    -   2.2 [Local complementation using a sequence of vertices](#s22)
+    -   2.3 [Local complementation using lexicographically sorted strings](#s23)
 
 ---
 
@@ -59,7 +59,7 @@ The following directories are present.
 -   03-lcOnAsequenceOfLexicographicallySortedVertices/
 
 
-## 2.1 Inside directory 01-lcOnAsingleVertex/ <a name="s21"></a>
+## 2.1 Local complementation at a single vertex <a name="s21"></a>
 
 1.  Execute the following code  to change the _present working directory_ as _01-lcOnAsingleVertex_.
 
@@ -103,8 +103,8 @@ bash script01-showOutput.sh
 6.  We are done here.
 
 
-## 2.2 Inside directory 02-lcOnAsequenceOfVertices/<a name="s22"></a>
+## 2.2 Local complementation using a sequence of vertices <a name="s22"></a>
 
 
-## 2.3 Inside directory 03-lcOnAsequenceOfLexicographicallySortedVertices/<a name="s23"></a>
+## 2.3 Local complementation using lexicographically sorted strings <a name="s23"></a>
 
