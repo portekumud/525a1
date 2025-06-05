@@ -18,7 +18,7 @@ cd 525a1/
 cd color-reversal-by-local-complementation/
 ```
 
-The documentation is available <a href="color-reversal-by-local-complementation/README.md">here</a>. 
+4. The documentation is available <a href="color-reversal-by-local-complementation/README.md">here</a>. Follow it.
 
 
 
