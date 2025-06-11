@@ -7,25 +7,17 @@
 #include <string>
 
 
-
-
-
-
-
-
 using namespace std;
 
-void f01_read_input(vector<vector<int>> &, vector<int> &, char *);
-void f02_extractIntegerWords(string, vector<vector<int>> &);
-void f03_local_complementation(vector<vector<int>> &, string, vector<vector<int>> &, vector<int>, vector<int> &, vector<int> &);
+void f01_read_input(vector<vector<int>> &, vector<int> &, char *, int &);
+void f02_extractIntegerWords(string str,vector<vector<int>> &);
+void f03_local_complementation(vector<vector<int>> &, string, 	vector<vector<int>> &, vector<int>, vector<int> &, vector<int> &, string);
 void f04_color_reversal();
-void f05_showMyGraph(vector<vector<int>> &, vector<int> &);
-void f06_drawGraph(vector<vector<int>>, vector<int>, string, string);
-void extractIntegers(const string &, vector<int> &);
-void f08_pleaseClearAll(vector<int> &, vector<int> &, vector<vector<int>> &);
-void f09_adjustForNextLoop(vector<vector<int>> &, vector<vector<int>> &, vector<int> &, vector<int> &);
-void f10_getTheTwoArgumentForDrawingGraph(vector<int>, vector<string> &, vector<string> &);
-void f11_writeTheOutputGraph(vector<vector<int>>, vector<int>);
+void f05_showMyGraph(vector<vector<int>> &, vector<int> &myBicoloration);
+void f06_drawGraph(vector<vector<int>>, vector<int>, string, string, string, vector<vector<vector<int>>> &);
+void f07_gen_len(int, string &, string &, vector<string> &);
+void f08_createLexicograohicalStringsUptoLengthN(vector<string> &, int);
+void f09_nPLUS1ROWSnCOLUMNS_print(vector<vector<vector<int>>>);
 
 
 
@@ -38,63 +30,86 @@ int main(int argc, char **argv) {
 	vector<vector<int>> myNewGraph;
 	vector<int> theNeighborsOfA;
 	string a;
-	vector<int> extracted;
-	vector<string> parameter1_forDrawing, parameter2_forDrawing;
-	vector<string>::iterator i1_parameter1_forDrawing, i2_parameter2_forDrawing;
-	vector<int>::iterator i3_extracted;
-
-	a = "2 1 0 1 2 0 2 1 0 1 1";
-	f01_read_input(theGraph, theBicoloration, *(argv + 1));
-
-
-	cout << endl << "Separate a: ";
-
-
-	 extractIntegers(a, extracted);
- 	f10_getTheTwoArgumentForDrawingGraph(extracted, parameter1_forDrawing, parameter2_forDrawing);
-
-	 for (int num : extracted) {
-		 std::cout << endl << "Elements of a: " << num << " ";
-	 }
-
-
-	 for(i3_extracted = extracted.begin(), i1_parameter1_forDrawing = parameter1_forDrawing.begin(), i2_parameter2_forDrawing = parameter2_forDrawing.begin(); i3_extracted != extracted.end(); i3_extracted++, i1_parameter1_forDrawing++, i2_parameter2_forDrawing++) {
-
-	    //for (int num : extracted) {
-	    	std::cout << endl << endl << endl << endl << "Calling LC via " << *i3_extracted << " only";
-	    	f05_showMyGraph(theGraph, theBicoloration);
-	    	f08_pleaseClearAll(theNewBicoloration, theNeighborsOfA, myNewGraph);
-
-	    	f03_local_complementation(theGraph, to_string(*i3_extracted), myNewGraph, theBicoloration, theNeighborsOfA, theNewBicoloration);
-
-	    	f09_adjustForNextLoop(theGraph, myNewGraph, theBicoloration, theNewBicoloration);
-
-
-
-
-	    	f05_showMyGraph(theGraph, theBicoloration);
-	    	f06_drawGraph(theGraph, theBicoloration, *i1_parameter1_forDrawing, *i2_parameter2_forDrawing);
-f11_writeTheOutputGraph(theGraph, theBicoloration);
+	int i;
+	vector<string> setOfAllLexicographicallyStrings;
+	int theNumberOfVertices;
+	string t1;
+	string zeroToT1 = "";
+	vector<int> theSequenceOfvertices;
+	vector<int>::iterator i1_theSequenceOfvertices;
+	vector<vector<vector<int>>> allLCraphs;
+	
+		//a = "0 1 0 1 0 1 0 2 1 2 0 2 1 0";
+	a = *(argv + 2);
+		cout << endl << "This is argv-0: " << *(argv + 0) << endl;
+		cout << endl << "This is argv-1: " << *(argv + 1) << endl;
+		cout << endl << "This is argv-2: " << *(argv + 2) << endl;
 
 
 
 
 
-	    	//void f06_drawGraph(theGraph, theBicoloration, string nameIndex, string nameTitle);
+	f01_read_input(theGraph, theBicoloration, *(argv + 1), theNumberOfVertices);
+	f06_drawGraph(theGraph, theBicoloration, "0", "", "inputGraph", allLCraphs);
+
+	cout << endl << "111111111111111111111111111111111111111111111111111111" << endl;
+	f05_showMyGraph(theGraph, theBicoloration);
+
+	cout << endl << "222222222222222222222222222222222222222222222222222222" << endl;
+	std::cout << "theNumberOfVertices: " << theNumberOfVertices << endl;
+
+
+	/////////////////////////////////////////
+
+
+
+	f08_createLexicograohicalStringsUptoLengthN(setOfAllLexicographicallyStrings, theNumberOfVertices);
+
+
+	//string ALPHABET2 = "01234";
+	    /////////////////////////////////
+
+	cout << endl << endl << "CAll ittttttt" << endl;
+
+
+	
+
+	 stringstream ss;
+	    string temp;
+	    int found;
+	    ss << a;
+
+
+	    while (!ss.eof()) {
+
+	           /* extracting word by word from stream */
+	           ss >> temp;
+
+	           /* Checking the given word is integer or not */
+	           if (stringstream(temp) >> found) {
+	               cout << "Word:" << found << endl;
+	           theSequenceOfvertices.push_back(found);
+	           }
 	    }
-	    std::cout << std::endl;
 
 
 
 
-	    i1_parameter1_forDrawing = parameter1_forDrawing.begin();
-	    i2_parameter2_forDrawing = parameter2_forDrawing.begin();
+	    for(i1_theSequenceOfvertices = theSequenceOfvertices.begin(), i = 0; i1_theSequenceOfvertices != theSequenceOfvertices.end(); i1_theSequenceOfvertices++, i++) {
+	    	//int t1 = *i1_theSequenceOfvertices;
+	    	cout << endl << "iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii: " << i << endl;
+			zeroToT1 = zeroToT1 + to_string(*i1_theSequenceOfvertices);
 
-	    while(i1_parameter1_forDrawing != parameter1_forDrawing.end()) {
 
-	    		cout << endl << *i1_parameter1_forDrawing << "-" << *i2_parameter2_forDrawing << endl;
-	    	i1_parameter1_forDrawing++;
-	    	i2_parameter2_forDrawing++;
+
+
+	    	f03_local_complementation(theGraph, to_string(*i1_theSequenceOfvertices), myNewGraph, theBicoloration, theNeighborsOfA, theNewBicoloration, zeroToT1);
+			f06_drawGraph(myNewGraph, theNewBicoloration, to_string(i + 1), "nameTitle", zeroToT1, allLCraphs);
+
+
+			theGraph = myNewGraph;
+			theBicoloration = theNewBicoloration;
+
 
 	    }
 
@@ -102,16 +117,48 @@ f11_writeTheOutputGraph(theGraph, theBicoloration);
 
 
 
-	//f03_local_complementation(theGraph, a, myNewGraph, theBicoloration, theNeighborsOfA, theNewBicoloration);
-	//f04_color_reversal();
 
+
+
+
+	for(unsigned int i = 0; i < a.length(); i++) {
+		cout << endl;
+		cout << "kkkkkkkkkkkkkkkkkkkkkkkkkkkkk: " << i << endl;
+		cout << "a.length(): " << a.length() << endl;
+
+/*		t1 = a[i];
+		zeroToT1 = a.substr(0, i+1);
+		//cout << ":: " << i << ". t1: " << t1 << endl;
+		cout << "zeroToT1: " << zeroToT1 << endl << endl;
+
+
+		f03_local_complementation(theGraph, t1, myNewGraph, theBicoloration, theNeighborsOfA, theNewBicoloration, zeroToT1);
+		f05_showMyGraph(myNewGraph, theNewBicoloration);
+
+
+
+		f06_drawGraph(myNewGraph, theNewBicoloration, to_string(i + 1), "afterLocalCom", zeroToT1);
+
+		theGraph = myNewGraph;
+		theBicoloration = theNewBicoloration;
+		cout << endl;
+		cout << endl;
+
+
+		*/
+
+	}//f04_color_reversal();
+
+	f09_nPLUS1ROWSnCOLUMNS_print(allLCraphs);
 
 	//cout << endl << "Test arguments: " << argc << ": " << *(argv + 0) << *(argv + 1);
+
+	cout << endl;
 
 	return 0;
 }
 
-void f01_read_input(vector<vector<int>> &myGraph, vector<int> &myBicoloration, char * theFilename) {
+void f01_read_input(vector<vector<int>> &myGraph, vector<int> &myBicoloration, char *theFilename, int &theNumberOfVertices) {
 	//cout << endl << "In read input:  " << fileName[1] << endl;
     	//vector<vector<int>> v2;
         //vector<int> v1;
@@ -119,14 +166,11 @@ void f01_read_input(vector<vector<int>> &myGraph, vector<int> &myBicoloration, c
 	vector<int>::iterator p2;
 	vector<int> temp1;
 	void *temp2;
+	string zeroToT1 = "zeroToT1";
 
 	std::ifstream readFile(theFilename);
 
 	//cout << "theFilename: " << theFilename;
-
-
-
-
 
 
 
@@ -138,21 +182,10 @@ void f01_read_input(vector<vector<int>> &myGraph, vector<int> &myBicoloration, c
 		//v1.clear();
 
 		while (std::getline(readFile, line)) {
-			std::cout << line << typeid(line).name() << ": " << line[0] << endl;
-
-			if (line[0] == '/' || line[0] == '*') {
-				cout << "Not an integer" << endl;
-						}
-
-
-			else {
-				cout << "Yes an integer" << endl;
-
-
+			std::cout << line << std::endl;
 			//v1.push_back(line);
 			//
 			f02_extractIntegerWords(line, myGraph);
-			}
 
 
 	//	    v2.push_back({7, 8, 9});
@@ -227,8 +260,8 @@ void f01_read_input(vector<vector<int>> &myGraph, vector<int> &myBicoloration, c
 
 
 	cout << endl << "yahoo 1" << endl;
+	theNumberOfVertices = myBicoloration.size();
 	f05_showMyGraph(myGraph, myBicoloration);
-	f06_drawGraph(myGraph, myBicoloration, "00", "initial");
 
 
 
@@ -276,7 +309,7 @@ void f02_extractIntegerWords(string str,vector<vector<int>> &v2) {
 
 }
 
-void f03_local_complementation(vector<vector<int>> &myGraph, string a11, vector<vector<int>> &myNewGraph, vector<int> theBicoloration, vector<int> &theNeighborsOfA, vector<int> &theNewBicoloration) {
+void f03_local_complementation(vector<vector<int>> &myGraph, string a11, vector<vector<int>> &myNewGraph, vector<int> theBicoloration, vector<int> &theNeighborsOfA, vector<int> &theNewBicoloration, string zeroToT1) {
 
 	//vector<int> theNeighborsOfA;
 	vector<int>::iterator p1_myGraphSingle;
@@ -303,7 +336,6 @@ void f03_local_complementation(vector<vector<int>> &myGraph, string a11, vector<
 	cout << endl << "In f02_local_complementation";
 	cout << endl << "Print v2 and a" << endl;
 
-	cout << endl << "This is input graph: " << endl;
 	for (unsigned int i = 0; i < myGraph.size(); i++) {
 	    for (unsigned int j = 0; j < myGraph[i].size(); j++) {
 		    cout << myGraph[i][j] << " ";
@@ -316,12 +348,17 @@ void f03_local_complementation(vector<vector<int>> &myGraph, string a11, vector<
 	p1_myGraphSingle = myGraph[a].begin();
 
 
-	cout << endl << "This is pivot a: " << a << endl;
+	cout << endl << "Value of a: " << a << endl;
 	cout << endl << "Neighbors of a: " << endl;
+
+
+	theNeighborsOfA.clear();
+	myNewGraph.clear();
+	theNewBicoloration.clear();
 
 	while(p1_myGraphSingle != myGraph[a].end()) {
 		if(*p1_myGraphSingle == 1) {
-			cout << "This is one neighbor: " << i << endl;
+			cout << "One at: " << i << endl;
 			theNeighborsOfA.push_back(i);
 		}
 		p1_myGraphSingle++;
@@ -365,17 +402,6 @@ for(p1_myGraphDouble = myGraph.begin(); p1_myGraphDouble != myGraph.end(); p1_my
 		p6_theBicoloration++;
 	}
 
-
-
-
-
-
-
-
-
-
-
-
 	p1_myGraphDouble = myGraph.begin();
 	for(p4_theLCtoDo = theLCtoDo.begin(); p4_theLCtoDo != theLCtoDo.end(); p4_theLCtoDo++) {
 		cout << endl  << "---------" << endl << (*p4_theLCtoDo)[0] << " - " << (*p4_theLCtoDo)[1] << endl;
@@ -399,6 +425,10 @@ for(p1_myGraphDouble = myGraph.begin(); p1_myGraphDouble != myGraph.end(); p1_my
 					myNewGraph[(*p4_theLCtoDo)[1]][(*p4_theLCtoDo)[0]] = 1;
 				}
 	}
+
+
+
+
 
 
 
@@ -439,7 +469,6 @@ for(p1_myGraphDouble = myGraph.begin(); p1_myGraphDouble != myGraph.end(); p1_my
 		}
 
 	}
-	cout << endl << "How 3? " << myNewGraph.size() << endl;
 
 
 
@@ -451,31 +480,14 @@ for(p1_myGraphDouble = myGraph.begin(); p1_myGraphDouble != myGraph.end(); p1_my
 	}
 
 
-	//		f06_drawGraph(myNewGraph, theNewBicoloration, "02", "afterLocalCom");
+	cout << endl << "myNewGraph: " << endl;
+	for (unsigned int i = 0; i < myNewGraph.size(); i++) {
+	    for (unsigned int j = 0; j < myNewGraph[i].size(); j++) {
+		    cout << myNewGraph[i][j] << " ";
+	    }
 
-	cout << endl << "How 1? " << myGraph.size() << endl;
-	cout << endl << "How 2? " << myNewGraph.size() << endl;
-
-
-
-
-	//kumud end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	    cout << endl;
+    }
 
 
 
@@ -493,59 +505,65 @@ void f05_showMyGraph(vector<vector<int>> &myGraph, vector<int> &myBicoloration) 
 	vector<int>::iterator p2;
 	vector<int> temp1;
 
-	cout << "Showing graph" << endl;
-
-	cout << endl << "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" << endl;
-	cout << endl << myGraph.size() << endl;
+	cout << endl <<"Showing graphhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh" << endl;
 
 	p1_myGraph = myGraph.begin();
 	//p2 = (*p1_myGraph).begin();
-	cout << "Hy 1" << endl;
+	//cout << "Hy 1" << endl;
 	//p2 = (*p1_myGraph).begin();
-	cout << typeid(p2).name() << endl;
-	cout << typeid((*p1_myGraph).begin()).name() << endl;
+	//cout << typeid(p2).name() << endl;
+	//cout << typeid((*p1_myGraph).begin()).name() << endl;
 
 	while(p1_myGraph != myGraph.end()) {
-		//cout << endl << "Hy. ";
-		//cout << "Ok: " << (*p1_myGraph)[0] << " : " << endl ;
-
+		//cout << endl << "Hy" << endl;
+		//cout << "ok" << (*p1_myGraph)[0] << " : ";
+		//temp1 = *p1_myGraph;
 		p2 = (*p1_myGraph).begin();
 
 		while(p2 != (*p1_myGraph).end()) {
-			//cout << " p2: " << *p2 << endl;
 			cout << *p2 << " ";
 			p2++;
 		}
-		p1_myGraph++;
 		cout << endl;
+		p1_myGraph++;
 	}
+	cout << endl << endl;
 
-	cout << endl << "Showing color in f05" << endl;
+	cout << "Showing color" << endl;
 
 	p2 = myBicoloration.begin();
 	while(p2 != myBicoloration.end()) {
 		cout << *p2 << " ";
 		p2++;
 	}
-	cout << endl << "bbbbbbbbbbbbbbbbbbbbbbbb" << endl;
-	cout << endl;
 	return;
 }
 
-void f06_drawGraph(vector<vector<int>> myGraph, vector<int> myBicoloration, string nameIndex, string nameTitle) {
+void f06_drawGraph(vector<vector<int>> myGraph, vector<int> myBicoloration, string nameIndex, string nameTitle, string zeroToT1, vector<vector<vector<int>>> &allLCraphs) {
 	vector<vector<int>>::iterator p1_myGraph;
-	string name = "graph" + nameIndex + "-" + nameTitle + ".py";
+	string name = "graph" + nameIndex + "-" + zeroToT1 + ".py";
+	string name2 = "lc-graph" + nameIndex + "-" + zeroToT1;
 	vector<int>::iterator p2;
 	int i = 0, j, k = 0;
 	int theNumberOfVertices;
 	//ofstream file("graph01-initial.py");
 
+	int writegraph_spaceTrack1, writegraph_spaceTrack2;
 
-    ofstream file(name);
+	vector<vector<int>> nPLUS1ROWSnCOLUMNS;
+
+    std::ofstream file(name);
+	  ofstream writeGraph(name2);
+
 
 
 
 	cout << endl << "In f06_drawGrap. name: " << name;
+
+	nPLUS1ROWSnCOLUMNS = myGraph;
+	nPLUS1ROWSnCOLUMNS.push_back(myBicoloration);
+	allLCraphs.push_back(nPLUS1ROWSnCOLUMNS);
+
 
 
 	p1_myGraph = myGraph.begin();
@@ -560,18 +578,23 @@ void f06_drawGraph(vector<vector<int>> myGraph, vector<int> myBicoloration, stri
 
 
 
+
 	while(p1_myGraph != myGraph.end()) {
 		cout << endl << "Hy" << endl;
 		cout << "ok" << (*p1_myGraph)[0] << " : ";
 		//temp1 = *p1_myGraph;
 		p2 = (*p1_myGraph).begin();
 		j = 0;
+		writegraph_spaceTrack1 = 0;
+
 		while(p2 != (*p1_myGraph).end()) {
+
 			if (*p2 == 1) {
 
 				if (k == 0) {
 					cout << " (one: " << i << ", " << j << " :one) ";
 					file << "(" << i << ", " << j << ")";
+
 					k++;
 				}
 				else {
@@ -581,19 +604,43 @@ void f06_drawGraph(vector<vector<int>> myGraph, vector<int> myBicoloration, stri
 				}
 			}
 			cout << "p2: " << *p2 << endl;
+
+			if(writegraph_spaceTrack1 == 0) {
+
+
+
+
+			writeGraph << *p2;
+			}
+			else {
+				writeGraph << " " << *p2;
+			}
+			writegraph_spaceTrack1++;
 			p2++;
 			j++;
 		}
 		p1_myGraph++;
 		i++;
+		writeGraph << endl;
 	}
 
 		cout << "Showing color" << endl;
 
 		p2 = myBicoloration.begin();
+		writegraph_spaceTrack2 = 0;
 		while(p2 != myBicoloration.end()) {
 			cout << *p2 << " ";
+
+			if(writegraph_spaceTrack2 == 0) {
+
+
+			writeGraph << *p2;
+			}
+			else {
+				writeGraph << " " << *p2;
+			}
 			p2++;
+			writegraph_spaceTrack2++;
 		}
 
 		file << "])";
@@ -605,12 +652,31 @@ void f06_drawGraph(vector<vector<int>> myGraph, vector<int> myBicoloration, stri
 			for (int t1 = 0; t1 < theNumberOfVertices; t1++) {
 				if(t1 == 0) {
 					file << t1 << ": \'";
-					file << "yellow";
+					if(myBicoloration[t1] == 1) {
+						file << "yellow";
+					}
+					else if (myBicoloration[t1] == -1){
+						file << "green";
+					}
+					else {
+						cout << endl << "Wrong code";
+					}
 					file << "\'";
 
 				}
 				else {
-					file << ", " << t1 << ": \'yellow\'";
+					file << ", " << t1 << ": \'";
+					if(myBicoloration[t1] == 1) {
+											file << "yellow";
+										}
+										else if (myBicoloration[t1] == -1){
+											file << "green";
+										}
+										else {
+											cout << endl << "Wrong code";
+										}
+					file << "\'";
+
 				}
 			}
 			file << "}, name=\'color\')";
@@ -625,132 +691,131 @@ void f06_drawGraph(vector<vector<int>> myGraph, vector<int> myBicoloration, stri
 		file << endl << "plt.savefig('graph";
 		file << nameIndex;
 		file << "-";
-		file << nameTitle;
+		file << zeroToT1;
 		file << ".pdf')" << endl;
+
+
+
 
 		file.close();
 
 
 
 
+		writeGraph.close();
 
 	return;
 }
 
-void extractIntegers(const std::string& str, std::vector<int> &extracted) {
-    std::stringstream ss(str);
-    std::vector<int> integers;
-    int num;
-    while (ss >> num) {
-        //integers.push_back(num);
-        extracted.push_back(num);
+
+void f07_gen_len(int target_len, string &current, string &ALPHABET, vector<string> &setOfAllLexicographicallyStrings) {
+    if (static_cast<int>(current.size()) == target_len) {
+        std::cout << current << ' ';
+        setOfAllLexicographicallyStrings.push_back(current);
+        return;
+    }
+
+    for (char c : ALPHABET) {
+        current.push_back(c);
+       // gen_len(target_len, current, ALPHABET);
+        f07_gen_len(target_len, current, ALPHABET, setOfAllLexicographicallyStrings);
+      //gen_len(int, string &, string &);
+
+        current.pop_back();   // back-track
     }
     return;
 }
 
-void f08_pleaseClearAll(vector<int> &theNewBicoloration, vector<int> &theNeighborsOfA, vector<vector<int>> &myNewGraph) {
-	theNewBicoloration.clear();
-		    	theNeighborsOfA.clear();
-		    	myNewGraph.clear();
 
-	return;
-}
-
-void f09_adjustForNextLoop(vector<vector<int>> &theGraph, vector<vector<int>> &myNewGraph, vector<int> &theBicoloration, vector<int> &theNewBicoloration) {
-	theGraph = myNewGraph;
-		    	theBicoloration = theNewBicoloration;
-		    	return;
-}
-
-void f10_getTheTwoArgumentForDrawingGraph(vector<int> myInput, vector<string> &parameter1_forDrawing, vector<string> &parameter2_forDrawing) {
-	int temp1 = myInput.size();
-	string theParameter1, theParameter2;
-	vector<int>::iterator i1_myInput, i2_myInput;
-
-	//cout << endl << "f10_getTheTwoArgumentForDrawingGraph. myInput size: " << myInput.size() << endl;
+void f08_createLexicograohicalStringsUptoLengthN(vector<string> &setOfAllLexicographicallyStrings, int theNumberOfVertices) {
+	int n = 2;
+	string ALPHABET = "";
 
 
-	for(int i1 : myInput) {
-		cout << i1 << " ";
+
+	for(int i = 0; i < theNumberOfVertices; i++) {
+		//std::cout << i;
+		ALPHABET = ALPHABET + to_string(i);
 	}
 
-	cout << endl;
-
-	for (int var = 0; var < temp1; var++) {
-		theParameter1 = "";
-		for (long unsigned int var2 = 0; var2 < to_string(temp1).length() - to_string(var + 1).length(); var2++) {
-			//cout << "0";
-			theParameter1 = theParameter1 + "0";
-		}
-		//parameter1_forDrawing.push_back(to_string(var + 1));
-
-		//cout << theParameter1 + to_string(var + 1) << " : " << to_string(var).length() << endl;
-		parameter1_forDrawing.push_back(theParameter1 + to_string(var + 1));
-	}
-	cout << endl << "==========" << endl;
-
-	for(i1_myInput = myInput.begin(); i1_myInput != myInput.end(); i1_myInput++) {
-		theParameter2 = "";
-		for(i2_myInput = myInput.begin(); i2_myInput < i1_myInput; i2_myInput++) {
-			//cout << *i2_myInput;
-			theParameter2 = theParameter2 + to_string(*i2_myInput);
-		}
-
-		//cout << theParameter2 + to_string(*i1_myInput) << endl;
-		parameter2_forDrawing.push_back(theParameter2 + to_string(*i1_myInput));
-	}
+	std::cout << "ALPHABET: " << ALPHABET << endl;
 
 
-	return;
+
+	vector<string>::iterator p1_setOfAllLexicographicallyStrings;
+
+/*		    std::cout << "Enter maximum length n: ";
+		    if (!(std::cin >> n) || n <= 0)
+		    	return;*/
+
+		    std::string current;
+		    for (int len = 1; len <= n; ++len) {
+		        std::cout << "\nLength " << len << ":\n";
+		      f07_gen_len(len, current, ALPHABET, setOfAllLexicographicallyStrings);
+		        // void gen_len(int, string &, string &);
+
+		        std::cout << '\n';   // end of this length group
+		    }
+
+		    cout << "The setOfAllLexicographicallyStrings: ";
+		    p1_setOfAllLexicographicallyStrings = setOfAllLexicographicallyStrings.begin();
+		    while(p1_setOfAllLexicographicallyStrings != setOfAllLexicographicallyStrings.end()) {
+		    	std::cout << *p1_setOfAllLexicographicallyStrings << " ";
+		    	p1_setOfAllLexicographicallyStrings++;
+
+		    }
+		    cout << endl;
+		    return;
+
 }
 
 
-void f11_writeTheOutputGraph(vector<vector<int>> myGraph, vector<int> myBioloration) {
-	string name = "theoutput";
-	ofstream file(name, ios::app);
-	vector<vector<int>> ::iterator p1_myGraph;
-	vector<int>::iterator p2;
+void f09_nPLUS1ROWSnCOLUMNS_print(vector<vector<vector<int>>> myAllGraphs) {
+	vector<vector<vector<int>>>::iterator dim3;
 
 
-	//file << "import networkx as nx" << endl;
+	for(dim3 = myAllGraphs.begin(); dim3 != myAllGraphs.end(); dim3++) {
+		vector<vector<int>> temp1 = *dim3;
 
-	p1_myGraph = myGraph.begin();
-	while(p1_myGraph != myGraph.end()) {
-			//cout << endl << "Hy. ";
-			//cout << "Ok: " << (*p1_myGraph)[0] << " : " << endl ;
+		vector<vector<int>>::iterator p2_temp1;
 
-			p2 = (*p1_myGraph).begin();
+		for(p2_temp1 = temp1.begin(); p2_temp1 != temp1.end(); p2_temp1++) {
+			vector<int> temp2 = *p2_temp1;
 
-			while(p2 != (*p1_myGraph).end()) {
-				//cout << " p2: " << *p2 << endl;
-				//cout << *p2 << " ";
-				file << *p2 << " ";
-				p2++;
-			}
-			p1_myGraph++;
-			//cout << endl;
-			file << endl;
-		}
-
-
-
-
-
-	p2 = myBioloration.begin();
-			while(p2 != myBioloration.end()) {
-				file << *p2 << " ";
-				p2++;
+			vector<int>::iterator p3_temp2;
+			for(p3_temp2 = temp2.begin(); p3_temp2 != temp2.end(); p3_temp2++) {
+				cout << *p3_temp2 << " ";
 			}
 
-	file.close();
+			cout << endl;
+		}
+		cout << endl << "==================" << endl;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	return;
 }
-
-
-
-
-
-
-
-
-
