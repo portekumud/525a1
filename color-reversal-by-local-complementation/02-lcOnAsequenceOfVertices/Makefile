@@ -1,7 +1,7 @@
 graph01=graph01-initial
 graph02=graph02-afterLocalCom
 a=a
-file1=read.sh
+read=read.sh
 msg1=$
 line=line
 c="${msg1}${line}"
@@ -27,16 +27,17 @@ kumud02:
 	#echo "print(\"The original Graph\") " >> graph01-initial.py
 	#echo "nx.draw_networkx(G) " >> graph01-initial.py
 	#echo "plt.savefig('graph01-initial.png')" >> graph01-initial.py 
-	#g++ 02-kumud-localComplementationOnAsequenceOfVertices.cpp
-	#echo $(graph) $(sequence)
-	#./a.out ../input/$(graph) "$(sequence)"
 	#echo "" > read.sh
-	if [ -f $(file1) ]; then \
-		rm $(file1); \
-		touch $(file1); \
+	if [ -f $(read) ]; then \
+		echo "ok 1"; \
 	else\
-		touch $(file1); \
+		echo "ok 2"; \
+		touch $(read); \
 	fi
+	
+	
+	
+	
 	if [ -f $(lopf) ]; then \
 		echo "$(lopf) File exists."; \
 		rm $(lopf); \
@@ -57,10 +58,10 @@ kumud02:
 	#fi
 	
 	> $(fileReverseDuplicate).sh
-	
-	
-	#> $(deleteFileReverseDuplicate).sh
-	#> $(deleteFileReverseActual).sh
+	> $(lopf).sh	
+	echo "1111111111111111111111111"	
+	> $(deleteFileReverseDuplicate).sh
+	> $(deleteFileReverseActual).sh
 	
 	
 	
@@ -77,19 +78,20 @@ kumud02:
 	echo -n "$(msg1)" >> $(fileReverseDuplicate).sh
 	echo "file\"" >> $(fileReverseDuplicate).sh
 	echo "done" >> $(fileReverseDuplicate).sh
+	bash $(fileReverseDuplicate).sh >> $(lopf).sh
+	echo "22222222222222"
 	
 	echo "while read line; do" >> $(deleteFileReverseDuplicate).sh
-	echo -n "	echo python3 \"" >> $(deleteFileReverseDuplicate).sh
+	echo -n "	echo rm \"" >> $(deleteFileReverseDuplicate).sh
 	echo -n "$(thisIsDollar)" >> $(deleteFileReverseDuplicate).sh
 	echo "line\" >> $(deleteFileReverseActual).sh" >> $(deleteFileReverseDuplicate).sh
-	echo "done < $(fileReverse).sh" >> $(deleteFileReverseDuplicate).sh
-	bash $(deleteFileReverseDuplicate).sh >> $(fileReverseActual).sh
+	echo "done < $(lopf).sh" >> $(deleteFileReverseDuplicate).sh
+	bash $(deleteFileReverseDuplicate).sh
+	bash $(deleteFileReverseActual).sh
+	g++ 02-kumud-localComplementationOnAsequenceOfVertices.cpp
+	./a.out ../input/$(graph) "$(sequence)"
 	
-	echo "--------------------"
-	#cat $(fileReverse).sh
-	bash $(fileReverse).sh
-	echo "----------------"
-	
+	#touch $(read); 
 	
 	
 	
