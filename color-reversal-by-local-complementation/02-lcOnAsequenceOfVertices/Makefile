@@ -102,6 +102,7 @@ kumud02:
 	echo "done < listOfPythonFiles" >> runPythonDuplicate.sh
 	bash runPythonDuplicate.sh
 	bash runPythonActual.sh
+	cat equalOrNot
 
 	
 	

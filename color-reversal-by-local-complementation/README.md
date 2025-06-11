@@ -106,6 +106,11 @@ bash script01-showOutput.sh
 
 ## 2.2 Local complementation using a sequence of vertices <a name="s22"></a>
 
+```shell
+make -s kumud02 graph=../input/input2 sequence="0 1 2"
+```
+
+
 
 ## 2.3 Local complementation using lexicographically sorted strings <a name="s23"></a>
 

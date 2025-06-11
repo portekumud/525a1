@@ -7,13 +7,12 @@
 #include <string>
 
 
-
-
-
-
-
-
 using namespace std;
+
+enum equalORnot {
+  yesEqual,
+  NotEqual
+};
 
 void f01_read_input(vector<vector<int>> &, vector<int> &, char *);
 void f02_extractIntegerWords(string, vector<vector<int>> &);
@@ -25,8 +24,8 @@ void extractIntegers(const string &, vector<int> &);
 void f08_pleaseClearAll(vector<int> &, vector<int> &, vector<vector<int>> &);
 void f09_adjustForNextLoop(vector<vector<int>> &, vector<vector<int>> &, vector<int> &, vector<int> &);
 void f10_getTheTwoArgumentForDrawingGraph(vector<int>, vector<string> &, vector<string> &);
-void f11_writeTheOutputGraph(vector<vector<int>>, vector<int>);
-
+void f11_writeTheOutputGraph(vector<vector<vector<int>>> allGraphs, vector<vector<int>> allBicoloration);
+void f12_checkIdentical(vector<vector<vector<int>>> allGraphs, vector<vector<int>> allBicoloration, enum equalORnot &);
 
 
 
@@ -42,11 +41,18 @@ int main(int argc, char **argv) {
 	vector<string> parameter1_forDrawing, parameter2_forDrawing;
 	vector<string>::iterator i1_parameter1_forDrawing, i2_parameter2_forDrawing;
 	vector<int>::iterator i3_extracted;
+	vector<vector<vector<int>>> allGraphs;
+	vector<vector<int>> allBicoloration;
+
+	enum equalORnot checkEqualOrNot = yesEqual;
+
 
 	//a = "2 1 0 1 2 0 2 1 0 1 1";
 	a = *(argv + 2);
 	//a = "2";
 	f01_read_input(theGraph, theBicoloration, *(argv + 1));
+	allGraphs.push_back(theGraph);
+	allBicoloration.push_back(theNewBicoloration);
 
 
 	cout << endl << "Separate a: ";
@@ -68,6 +74,8 @@ int main(int argc, char **argv) {
 	    	f08_pleaseClearAll(theNewBicoloration, theNeighborsOfA, myNewGraph);
 
 	    	f03_local_complementation(theGraph, to_string(*i3_extracted), myNewGraph, theBicoloration, theNeighborsOfA, theNewBicoloration);
+	    	allGraphs.push_back(myNewGraph);
+	    	allBicoloration.push_back(theNewBicoloration);
 
 	    	f09_adjustForNextLoop(theGraph, myNewGraph, theBicoloration, theNewBicoloration);
 
@@ -76,7 +84,8 @@ int main(int argc, char **argv) {
 
 	    	f05_showMyGraph(theGraph, theBicoloration);
 	    	f06_drawGraph(theGraph, theBicoloration, *i1_parameter1_forDrawing, *i2_parameter2_forDrawing);
-f11_writeTheOutputGraph(theGraph, theBicoloration);
+	    	f11_writeTheOutputGraph(allGraphs, allBicoloration);
+	    	f12_checkIdentical(allGraphs, allBicoloration, checkEqualOrNot);
 
 
 
@@ -723,7 +732,7 @@ void f10_getTheTwoArgumentForDrawingGraph(vector<int> myInput, vector<string> &p
 }
 
 
-void f11_writeTheOutputGraph(vector<vector<int>> myGraph, vector<int> myBioloration) {
+void f11_writeTheOutputGraph(vector<vector<vector<int>>> allGraphs, vector<vector<int>> allBicoloration) {
 	string name = "theoutput";
 	ofstream file(name, ios::app);
 	vector<vector<int>> ::iterator p1_myGraph;
@@ -731,6 +740,7 @@ void f11_writeTheOutputGraph(vector<vector<int>> myGraph, vector<int> myBiolorat
 
 
 	//file << "import networkx as nx" << endl;
+/*
 
 	p1_myGraph = myGraph.begin();
 	while(p1_myGraph != myGraph.end()) {
@@ -749,8 +759,9 @@ void f11_writeTheOutputGraph(vector<vector<int>> myGraph, vector<int> myBiolorat
 			//cout << endl;
 			file << endl;
 		}
+*/
 
-
+/*
 
 
 
@@ -759,6 +770,7 @@ void f11_writeTheOutputGraph(vector<vector<int>> myGraph, vector<int> myBiolorat
 				file << *p2 << " ";
 				p2++;
 			}
+	*/
 
 	file.close();
 	return;
@@ -766,6 +778,67 @@ void f11_writeTheOutputGraph(vector<vector<int>> myGraph, vector<int> myBiolorat
 
 
 
+void f12_checkIdentical(vector<vector<vector<int>>> allGraphs, vector<vector<int>> allBicoloration, enum equalORnot &checkEqualOrNot) {
+	cout << endl << "In f12: " << allGraphs.size() << endl;
+
+	vector<vector<int>> graphZero, graphLast;
+	vector<vector<int>>::iterator i1_graphZero, i2_graphLast;
+
+	vector<int> eachRowGraphZero, eachRowGraphLast;
+	vector<int>::iterator i3_eachRowGraphZero, i4_eachRowGraphLast;
+	string name = "equalOrNot";
+		ofstream file(name, ios::app);
+
+	graphZero = allGraphs[0];
+	graphLast = allGraphs[allGraphs.size() - 1];
+
+
+	i1_graphZero = allGraphs[0].begin();
+	i2_graphLast = allGraphs[allGraphs.size() - 1].begin();
+
+	while (i1_graphZero != allGraphs[0].end()) {
+		eachRowGraphZero = *i1_graphZero;
+		eachRowGraphLast = *i2_graphLast;
+
+		i3_eachRowGraphZero = eachRowGraphZero.begin();
+		i4_eachRowGraphLast = eachRowGraphLast.begin();
+		while (i3_eachRowGraphZero != eachRowGraphZero.end()) {
+			if (*i3_eachRowGraphZero != *i4_eachRowGraphLast) {
+				checkEqualOrNot = NotEqual;
+				break;
+			}
+
+			i3_eachRowGraphZero++;
+			i4_eachRowGraphLast++;
+		}
+
+
+		i1_graphZero++;
+		i2_graphLast++;
+	}
+
+	cout << endl << "After first comparison: ";
+	file << "'Graph zero' and 'Graph " << allGraphs.size() - 1 << " are ";
+
+	if (checkEqualOrNot == yesEqual) {
+		cout << " equal (bicoloration checking pending)" << endl;
+		file << "equal (bicoloration checking pending)" << endl;
+	}
+	else if (checkEqualOrNot == NotEqual) {
+		cout << " not equal" << endl;
+		file << "not equal" << endl;
+
+	}
+	else {
+		cout << " wrong code" << endl;
+	}
+
+	file.close();
+
+
+
+	return;
+}
 
 
 
