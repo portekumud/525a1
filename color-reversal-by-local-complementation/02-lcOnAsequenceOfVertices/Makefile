@@ -7,6 +7,7 @@ line=line
 c="${msg1}${line}"
 wao=wao
 lopf=listOfPythonFiles
+loafe=listOfAllFilesExcept
 fileReverseDuplicate=fileReverseDuplicate
 fileReverseActual=fileReverseActual
 deleteFileReverseDuplicate=deleteFileReverseDuplicate
@@ -28,28 +29,28 @@ kumud02:
 	#echo "nx.draw_networkx(G) " >> graph01-initial.py
 	#echo "plt.savefig('graph01-initial.png')" >> graph01-initial.py 
 	#echo "" > read.sh
-	if [ -f $(read) ]; then \
-		echo "ok 1"; \
-	else\
-		echo "ok 2"; \
-		touch $(read); \
-	fi
+	#if [ -f $(read) ]; then \
+	#	echo "ok 1"; \
+	#else\
+	#	echo "ok 2"; \
+	#	touch $(read); \
+	#fi
 	
 	
 	
 	
-	if [ -f $(lopf) ]; then \
-		echo "$(lopf) File exists."; \
-		rm $(lopf); \
-	else\
-		echo "$(lopf) File does not exist."; \
-	fi
-	if [ -f $(wao).sh ]; then \
-		echo "$(wao).sh File exists."; \
-		rm $(wao).sh; \
-	else\
-		echo "$(wao).sh File does not exist."; \
-	fi
+	#if [ -f $(lopf) ]; then \
+	#	echo "$(lopf) File exists."; \
+	#	rm $(lopf); \
+	#else\
+	#	echo "$(lopf) File does not exist."; \
+	#fi
+	#if [ -f $(wao).sh ]; then \
+	#	echo "$(wao).sh File exists."; \
+	#	rm $(wao).sh; \
+	#else\
+	#	echo "$(wao).sh File does not exist."; \
+	#fi
 	#if [ -f $(fileReverse).sh ]; then \
 	#	echo "$(fileReverse).sh File exists."; \
 	#	rm $(fileReverse).sh; \
@@ -59,6 +60,7 @@ kumud02:
 	
 	> $(fileReverseDuplicate).sh
 	> $(lopf).sh	
+	> $(loafe).sh
 	echo "1111111111111111111111111"	
 	> $(deleteFileReverseDuplicate).sh
 	> $(deleteFileReverseActual).sh
@@ -78,20 +80,29 @@ kumud02:
 	echo -n "$(msg1)" >> $(fileReverseDuplicate).sh
 	echo "file\"" >> $(fileReverseDuplicate).sh
 	echo "done" >> $(fileReverseDuplicate).sh
-	bash $(fileReverseDuplicate).sh >> $(lopf).sh
+	bash $(fileReverseDuplicate).sh >> $(loafe).sh
 	echo "22222222222222"
 	
 	echo "while read line; do" >> $(deleteFileReverseDuplicate).sh
 	echo -n "	echo rm \"" >> $(deleteFileReverseDuplicate).sh
 	echo -n "$(thisIsDollar)" >> $(deleteFileReverseDuplicate).sh
 	echo "line\" >> $(deleteFileReverseActual).sh" >> $(deleteFileReverseDuplicate).sh
-	echo "done < $(lopf).sh" >> $(deleteFileReverseDuplicate).sh
+	echo "done < $(loafe).sh" >> $(deleteFileReverseDuplicate).sh
 	bash $(deleteFileReverseDuplicate).sh
 	bash $(deleteFileReverseActual).sh
 	g++ 02-kumud-localComplementationOnAsequenceOfVertices.cpp
 	./a.out ../input/$(graph) "$(sequence)"
+	ls | grep py >> $(lopf)
 	
-	#touch $(read); 
+	
+	echo "while read line; do" >> runPythonDuplicate.sh
+	echo -n "	echo python3 \"" >> runPythonDuplicate.sh
+	echo -n "$(thisIsDollar)" >> runPythonDuplicate.sh
+	echo "line\" >> runPythonActual.sh" >> runPythonDuplicate.sh
+	echo "done < listOfPythonFiles" >> runPythonDuplicate.sh
+	bash runPythonDuplicate.sh
+	bash runPythonActual.sh
+
 	
 	
 	

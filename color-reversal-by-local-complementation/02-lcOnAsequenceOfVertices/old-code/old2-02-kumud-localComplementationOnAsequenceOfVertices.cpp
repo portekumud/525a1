@@ -43,9 +43,7 @@ int main(int argc, char **argv) {
 	vector<string>::iterator i1_parameter1_forDrawing, i2_parameter2_forDrawing;
 	vector<int>::iterator i3_extracted;
 
-	//a = "2 1 0 1 2 0 2 1 0 1 1";
-	a = *(argv + 2);
-	//a = "2";
+	a = "2 1 0 1 2 0 2 1 0 1 1";
 	f01_read_input(theGraph, theBicoloration, *(argv + 1));
 
 
@@ -603,32 +601,16 @@ void f06_drawGraph(vector<vector<int>> myGraph, vector<int> myBicoloration, stri
 		if (k == 1) {
 			file << endl << "nx.set_node_attributes(G, {";
 			theNumberOfVertices = myBicoloration.size();
+			cout << endl << "theNumberOfVertices: " << theNumberOfVertices << endl;
 			for (int t1 = 0; t1 < theNumberOfVertices; t1++) {
 				if(t1 == 0) {
 					file << t1 << ": \'";
-					if(myBicoloration[t1] == 1) {
-						file << "yellow";
-					}
-					else if (myBicoloration[t1] == -1){
-						file << "green";
-					}
-					else {
-						cout << endl << "Wrong code";
-					}
+					file << "yellow";
 					file << "\'";
+
 				}
 				else {
-					file << ", " << t1 << ": \'";
-					if(myBicoloration[t1] == 1) {
-						file << "yellow";
-					}
-					else if (myBicoloration[t1] == -1){
-						file << "green";
-					}
-					else {
-						cerr << endl << "Wrong code";
-					}
-					file << "\'";
+					file << ", " << t1 << ": \'yellow\'";
 				}
 			}
 			file << "}, name=\'color\')";

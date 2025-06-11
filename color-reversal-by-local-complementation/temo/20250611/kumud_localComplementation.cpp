@@ -42,9 +42,9 @@ int main(int argc, char **argv) {
 	vector<string> parameter1_forDrawing, parameter2_forDrawing;
 	vector<string>::iterator i1_parameter1_forDrawing, i2_parameter2_forDrawing;
 	vector<int>::iterator i3_extracted;
+	vector<vector<vector<int>>> allGraphs;
 
-	//a = "2 1 0 1 2 0 2 1 0 1 1";
-	a = *(argv + 2);
+	a = "2 1 0 1 2 0 2 1 0 1 1";
 	//a = "2";
 	f01_read_input(theGraph, theBicoloration, *(argv + 1));
 
