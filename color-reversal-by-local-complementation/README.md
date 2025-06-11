@@ -106,9 +106,27 @@ bash script01-showOutput.sh
 
 ## 2.2 Local complementation using a sequence of vertices <a name="s22"></a>
 
-```shell
-make -s kumud02 graph=../input/input2 sequence="0 1 2"
+1. Execute the following command to change the _present working directory_ as `02-lcOnAsequenceOfVertices`.
+
+```shell 
+cd ../02-lcOnAsequenceOfVertices/` 
 ```
+
+2. Then type the following command to run the implementation.
+
+```shell
+make -s kumud02 graph=../input/p sequence="v0 v1 v2 ... vn-1"
+```
+
+> [!NOTE]
+> Here `p` is the input graph and `v0 v1 v2 ... vn-1` is a valid sequence of vertices.
+
+For example, the following is one valid syntax:
+```shell
+make kumud02 graph=../input/input2 sequence="0 1 2"
+```
+
+3. Done
 
 
 
