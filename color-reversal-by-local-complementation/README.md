@@ -126,9 +126,9 @@ For example, the following is one valid syntax:
 make kumud02 graph=../input/input2 sequence="0 1 2"
 ```
 
-3. Done
+3. The results are available in the two files, `equalOrNot` and `theoutput`.
 
-
+4. Done.
 
 ## 2.3 Local complementation using lexicographically sorted strings <a name="s23"></a>
 

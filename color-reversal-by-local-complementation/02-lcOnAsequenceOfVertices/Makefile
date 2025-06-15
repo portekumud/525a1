@@ -64,8 +64,8 @@ kumud02:
 	echo "1111111111111111111111111"	
 	> $(deleteFileReverseDuplicate).sh
 	> $(deleteFileReverseActual).sh
-	
-	
+	> equalOrNot	
+	> theoutput	
 	
 	echo "for file in *; do" >> $(fileReverseDuplicate).sh
 	echo -n "	if [[ \"" >> $(fileReverseDuplicate).sh

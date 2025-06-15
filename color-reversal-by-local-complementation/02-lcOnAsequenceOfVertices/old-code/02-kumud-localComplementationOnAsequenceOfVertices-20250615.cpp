@@ -5,14 +5,13 @@
 #include <sstream>
 #include <typeinfo>
 #include <string>
-#include <algorithm>
 
 
 using namespace std;
 
 enum equalORnot {
-	yesEqual,
-	NotEqual
+  yesEqual,
+  NotEqual
 };
 
 void f01_read_input(vector<vector<int>> &, vector<int> &, char *);
@@ -27,8 +26,7 @@ void f09_adjustForNextLoop(vector<vector<int>> &, vector<vector<int>> &, vector<
 void f10_getTheTwoArgumentForDrawingGraph(vector<int>, vector<string> &, vector<string> &);
 void f11_writeTheOutputGraph(vector<vector<vector<int>>> allGraphs, vector<vector<int>> allBicoloration);
 void f12_checkIdentical(vector<vector<vector<int>>> allGraphs, vector<vector<int>> allBicoloration, enum equalORnot &);
-void f13_doYourJob(vector<string> &, int, vector<string> &, int);
-void f14_generateStrings(const vector<string>, const string, const int, const int, vector<string> &);
+
 
 
 
@@ -45,29 +43,22 @@ int main(int argc, char **argv) {
 	vector<int>::iterator i3_extracted;
 	vector<vector<vector<int>>> allGraphs;
 	vector<vector<int>> allBicoloration;
-	int lexicographyLimit = 3;
-	vector<string> theAlphabet, theSetOfAllLexicographicalStrings;
 
 	enum equalORnot checkEqualOrNot = yesEqual;
 
 
 	//a = "2 1 0 1 2 0 2 1 0 1 1";
-	//a = "2 1";
 	a = *(argv + 2);
 	//a = "2";
 	f01_read_input(theGraph, theBicoloration, *(argv + 1));
-
-
-
 	allGraphs.push_back(theGraph);
-	allBicoloration.push_back(theBicoloration);
+	allBicoloration.push_back(theNewBicoloration);
 
-	cout << "After f01. size of zero: " << allBicoloration[0].size() << endl;
 
 	cout << endl << "Separate a: ";
 
 
-	extractIntegers(a, extracted);
+	 extractIntegers(a, extracted);
  	f10_getTheTwoArgumentForDrawingGraph(extracted, parameter1_forDrawing, parameter2_forDrawing);
 
 	 for (int num : extracted) {
@@ -76,38 +67,57 @@ int main(int argc, char **argv) {
 
 
 	 for(i3_extracted = extracted.begin(), i1_parameter1_forDrawing = parameter1_forDrawing.begin(), i2_parameter2_forDrawing = parameter2_forDrawing.begin(); i3_extracted != extracted.end(); i3_extracted++, i1_parameter1_forDrawing++, i2_parameter2_forDrawing++) {
-		 std::cout << endl << endl << endl << endl << "Calling LC via " << *i3_extracted << " only";
-		 f05_showMyGraph(theGraph, theBicoloration);
-		 f08_pleaseClearAll(theNewBicoloration, theNeighborsOfA, myNewGraph);
-		 f03_local_complementation(theGraph, to_string(*i3_extracted), myNewGraph, theBicoloration, theNeighborsOfA, theNewBicoloration);
-		 allGraphs.push_back(myNewGraph);
-		 allBicoloration.push_back(theNewBicoloration);
-		 f09_adjustForNextLoop(theGraph, myNewGraph, theBicoloration, theNewBicoloration);
-		 f05_showMyGraph(theGraph, theBicoloration);
-		 f06_drawGraph(theGraph, theBicoloration, *i1_parameter1_forDrawing, *i2_parameter2_forDrawing);
-	}
-	std::cout << std::endl;
 
-	/*
-	i1_parameter1_forDrawing = parameter1_forDrawing.begin();
-	i2_parameter2_forDrawing = parameter2_forDrawing.begin();
+	    //for (int num : extracted) {
+	    	std::cout << endl << endl << endl << endl << "Calling LC via " << *i3_extracted << " only";
+	    	f05_showMyGraph(theGraph, theBicoloration);
+	    	f08_pleaseClearAll(theNewBicoloration, theNeighborsOfA, myNewGraph);
 
-	while(i1_parameter1_forDrawing != parameter1_forDrawing.end()) {
+	    	f03_local_complementation(theGraph, to_string(*i3_extracted), myNewGraph, theBicoloration, theNeighborsOfA, theNewBicoloration);
+	    	allGraphs.push_back(myNewGraph);
+	    	allBicoloration.push_back(theNewBicoloration);
 
-		cout << endl << *i1_parameter1_forDrawing << "-" << *i2_parameter2_forDrawing << endl;
-		i1_parameter1_forDrawing++;
+	    	f09_adjustForNextLoop(theGraph, myNewGraph, theBicoloration, theNewBicoloration);
+
+
+
+
+	    	f05_showMyGraph(theGraph, theBicoloration);
+	    	f06_drawGraph(theGraph, theBicoloration, *i1_parameter1_forDrawing, *i2_parameter2_forDrawing);
+	    	f11_writeTheOutputGraph(allGraphs, allBicoloration);
+	    	f12_checkIdentical(allGraphs, allBicoloration, checkEqualOrNot);
+
+
+
+
+
+	    	//void f06_drawGraph(theGraph, theBicoloration, string nameIndex, string nameTitle);
+	    }
+	    std::cout << std::endl;
+
+
+
+
+	    i1_parameter1_forDrawing = parameter1_forDrawing.begin();
+	    i2_parameter2_forDrawing = parameter2_forDrawing.begin();
+
+	    while(i1_parameter1_forDrawing != parameter1_forDrawing.end()) {
+
+	    		cout << endl << *i1_parameter1_forDrawing << "-" << *i2_parameter2_forDrawing << endl;
+	    	i1_parameter1_forDrawing++;
 	    	i2_parameter2_forDrawing++;
-	}
-	*/
 
-	cout << "In main. size of zero: " << allBicoloration[0].size() << endl;
-	cout << "In main. size of one: " << allBicoloration[1].size() << endl;
-	f11_writeTheOutputGraph(allGraphs, allBicoloration);
+	    }
 
-	f12_checkIdentical(allGraphs, allBicoloration, checkEqualOrNot);
-	//cout << endl << "Generate all lexicographical strings upto length  " << lexicographyLimit << endl;
-	//f13_doYourJob(theAlphabet, lexicographyLimit, theSetOfAllLexicographicalStrings, theGraph.size());
-	//cout << endl << theGraph.size() << endl;
+
+
+
+
+	//f03_local_complementation(theGraph, a, myNewGraph, theBicoloration, theNeighborsOfA, theNewBicoloration);
+	//f04_color_reversal();
+
+
+	//cout << endl << "Test arguments: " << argc << ": " << *(argv + 0) << *(argv + 1);
 
 	return 0;
 }
@@ -229,7 +239,6 @@ void f01_read_input(vector<vector<int>> &myGraph, vector<int> &myBicoloration, c
 
 	cout << endl << "yahoo 1" << endl;
 	f05_showMyGraph(myGraph, myBicoloration);
-	cout << endl << "yahoo 2" << endl;
 	f06_drawGraph(myGraph, myBicoloration, "00", "initial");
 
 
@@ -242,7 +251,7 @@ void f02_extractIntegerWords(string str,vector<vector<int>> &v2) {
     stringstream ss;
 
     vector<int> v1;
-	cout << endl << "Yahoo 3" << endl;
+	cout << endl << "Yahoo 1" << endl;
     /* Storing the whole string into string stream */
     ss << str;
     /* Running loop till the end of the stream */
@@ -263,7 +272,7 @@ void f02_extractIntegerWords(string str,vector<vector<int>> &v2) {
         temp = "";
     }
     v2.push_back(v1);
-    cout << endl << "Yahoo 4" << endl;
+    cout << endl << "Yahoo 2" << endl;
 
     cout << endl << "printing vector: " << endl;
     for (unsigned int i = 0; i < v2.size(); i++) {
@@ -644,7 +653,7 @@ void f06_drawGraph(vector<vector<int>> myGraph, vector<int> myBicoloration, stri
 		file << nameIndex;
 		file << "-";
 		file << nameTitle;
-		file << ".png')" << endl;
+		file << ".pdf')" << endl;
 
 		file.close();
 
@@ -725,75 +734,12 @@ void f10_getTheTwoArgumentForDrawingGraph(vector<int> myInput, vector<string> &p
 
 void f11_writeTheOutputGraph(vector<vector<vector<int>>> allGraphs, vector<vector<int>> allBicoloration) {
 	string name = "theoutput";
-	//ofstream file(name, ios::app);
-	ofstream file(name, ios::out);
-	vector<vector<vector<int>>>::iterator p2_allGraphs;
-	vector<vector<int>>::iterator p1_myGraph;
+	ofstream file(name, ios::app);
+	vector<vector<int>> ::iterator p1_myGraph;
+	vector<int>::iterator p2;
 
 
-
-	file << "This is the output file.: " << endl;
-
-	cout << endl << "f11: " << allGraphs.size() << ". " << allBicoloration.size() << endl << endl;
-	cout << endl << "size of zero: " << allBicoloration[0].size() << endl;
-	cout << endl << "size of one: " << allBicoloration[1].size() << endl;
-
-
-	for (p2_allGraphs = allGraphs.begin(), p1_myGraph = allBicoloration.begin(); p2_allGraphs != allGraphs.end(); p2_allGraphs++, p1_myGraph++) {
-		vector<vector<int>> temp1 = *p2_allGraphs;
-
-
-		cout << "Graph: " << endl;
-		file << "Graph: " << endl;
-		for(vector<vector<int>>::iterator i2 = temp1.begin(); i2 != temp1.end(); i2++) {
-			vector<int> i3 = *i2;
-			for(vector<int>::iterator i4 = i3.begin(); i4 != i3.end(); i4++) {
-				cout << *i4 << " ";
-				file << *i4 << " ";
-			}
-			cout << endl;
-			file << endl;
-		}
-		cout << "Now bicoloration: " << endl;
-		file << "Now bicoloration: " << endl;
-
-
-
-		vector<int> uu = *p1_myGraph;
-		//cout << ": " << uu.size() << endl;
-
-		for(vector<int>::iterator p2uu = uu.begin(); p2uu != uu.end(); p2uu++) {
-			cout << *p2uu << " : ";
-			file << *p2uu << " ";
-		}
-
-
-		/*	for(vector<int>::iterator p6 = p5.begin(); p6 != p5.end(); p6++) {
-		 * cout << *p6 << " ";
-		}*/
-
-		cout << endl << "================" << endl << endl << endl;
-		file << endl << "================" << endl << endl << endl;
-	}
-/*
-	for(vector<vector<int>>::iterator p1_myGraph = allBicoloration.begin(); p1_myGraph != allBicoloration.end(); p1_myGraph++) {
-		vector<int> p5 = *p1_myGraph;
-		for(vector<int>::iterator p6 = p5.begin(); p6 != p5.end(); p6++) {
-			cout << *p6 << " ";
-		}
-	}
-*/
-	//p1_myrapGraph = allGraphs.begin();
-
-	//for(p1_myGraph = allGraphs.begin(); p1_myGraph != allGraphs.end(); p1_myGraph++) {
-		//vector<vector<int>> temp1 = *(p1_myGraph);
-	//}
-
-
-
-
-
-
+	//file << "import networkx as nx" << endl;
 /*
 
 	p1_myGraph = myGraph.begin();
@@ -833,98 +779,18 @@ void f11_writeTheOutputGraph(vector<vector<vector<int>>> allGraphs, vector<vecto
 
 
 void f12_checkIdentical(vector<vector<vector<int>>> allGraphs, vector<vector<int>> allBicoloration, enum equalORnot &checkEqualOrNot) {
-	cout << endl << "In f12: " << allGraphs.size() << ". checkEqualOrNot: " << checkEqualOrNot << endl << endl;
+	cout << endl << "In f12: " << allGraphs.size() << endl;
 
-	vector<vector<int>> graphZero, graphLast, graphCurrent;
+	vector<vector<int>> graphZero, graphLast;
 	vector<vector<int>>::iterator i1_graphZero, i2_graphLast;
-	vector<vector<vector<int>>>::iterator i3_graphCurrent;
+
 	vector<int> eachRowGraphZero, eachRowGraphLast;
-	vector<int>::iterator i4_eachRowGraphLast;
-	vector<vector<int>> graphLHS;
-	vector<int> bicolorationLHS;
-	vector<vector<int>>::iterator thatBicoloration;
+	vector<int>::iterator i3_eachRowGraphZero, i4_eachRowGraphLast;
+	string name = "equalOrNot";
+		ofstream file(name, ios::app);
 
-	ofstream file("equalOrNot", ios::app);
-
-	graphLHS = allGraphs[0];
-	bicolorationLHS = allBicoloration[0];
-
-
-
-
-
-	for(i3_graphCurrent = allGraphs.begin(), thatBicoloration = allBicoloration.begin(); i3_graphCurrent != allGraphs.end(); i3_graphCurrent++, thatBicoloration++) {
-		vector<vector<int>> graphRHS = *i3_graphCurrent;
-		vector<vector<int>>::iterator iLHS, iRHS;
-
-		for(iLHS = graphLHS.begin(), iRHS = graphRHS.begin(); iLHS != graphLHS.end(); iLHS++, iRHS++) {
-			vector<int> rowLHS, rowRHS;
-			vector<int>::iterator i4, i5;
-			rowLHS = *iLHS;
-			rowRHS = *iRHS;
-
-			for(i4 = rowLHS.begin(), i5 = rowRHS.begin(); i4 != rowLHS.end(); i4++, i5++) {
-				cout << *i4 << " Vs." << *i5 << " : ";
-				cout << endl;
-
-				if(*i4 != *i5) {
-					checkEqualOrNot = NotEqual;
-					break;
-				}
-			}
-			/*if(checkEqualOrNot == NotEqual) {
-				break;
-			}*/
-
-
-		}
-
-		if(checkEqualOrNot == yesEqual) {
-			vector<int> bicolorationRHS = *thatBicoloration;
-			vector<int>::iterator iLHS, iRHS;
-
-			for(iLHS = bicolorationLHS.begin(), iRHS = bicolorationRHS.begin(); iLHS != bicolorationLHS.end(); iLHS++, iRHS++) {
-				cout << *iLHS << " :Vs: " << *iRHS << " ";
-				file << *iLHS << " :Vs: " << *iRHS << " ";
-				if(*iLHS == *iRHS) {
-					checkEqualOrNot = NotEqual;
-					cout << "unequal bicoloration" << endl;
-					file << "unequal bicoloration" << endl;
-					//break;
-				}
-
-			}
-
-			if(checkEqualOrNot == yesEqual) {
-				cout << endl << "checkEqualOrNot::: " << "yesssssssssssssss equal" << endl;
-				file << endl << "checkEqualOrNot::: " << "yesssssssssssssss equal" << endl;
-			}
-			else {
-				cout << endl << "checkEqualOrNot::: " << "notttttttttttttt equal" << endl;
-				file << endl << "checkEqualOrNot::: " << "notttttttttttttt equal" << endl;
-			}
-
-		}
-		else if (checkEqualOrNot == NotEqual) {
-			cout << "checkEqualOrNot::: " << "not equal" << endl;
-			file << "checkEqualOrNot::: " << "not equal" << endl;
-
-		}
-		else {
-			cout << "Wrong code";
-			file << "Wrong code";
-
-		}
-		cout << endl << endl << endl;
-		file << "----------------" << endl << endl;
-
-
-	}
-
-
-
-
-/*	graphLast = allGraphs[allGraphs.size() - 1];
+	graphZero = allGraphs[0];
+	graphLast = allGraphs[allGraphs.size() - 1];
 
 
 	i1_graphZero = allGraphs[0].begin();
@@ -946,17 +812,13 @@ void f12_checkIdentical(vector<vector<vector<int>>> allGraphs, vector<vector<int
 			i4_eachRowGraphLast++;
 		}
 
-		if (checkEqualOrNot == NotEqual) {
-			break;
-		}
-		else {
-			i1_graphZero++;
-			i2_graphLast++;
-		}
+
+		i1_graphZero++;
+		i2_graphLast++;
 	}
 
 	cout << endl << "After first comparison: ";
-	file << "'Graph zero' and 'Graph " << allGraphs.size() - 1 << "' are ";
+	file << "'Graph zero' and 'Graph " << allGraphs.size() - 1 << " are ";
 
 	if (checkEqualOrNot == yesEqual) {
 		cout << " equal (bicoloration checking pending)" << endl;
@@ -969,7 +831,7 @@ void f12_checkIdentical(vector<vector<vector<int>>> allGraphs, vector<vector<int
 	}
 	else {
 		cout << " wrong code" << endl;
-	}*/
+	}
 
 	file.close();
 
@@ -978,39 +840,8 @@ void f12_checkIdentical(vector<vector<vector<int>>> allGraphs, vector<vector<int
 	return;
 }
 
-void f13_doYourJob(vector<string> &alphabet, int n, vector<string> &theSetOfAllLexicographicalStrings, int sizeOfAlphabet) {
-	for(int i = 0; i < sizeOfAlphabet; i++) {
-		cout << endl << to_string(i);
-		alphabet.push_back(to_string(i));
-	}
-//alphabet = {"0", "1", "2"};  // You can modify this
-			     //
-			     //
 
 
-// Ensure alphabet is in lexicographic order
-    sort(alphabet.begin(), alphabet.end());
-
-    for (int length = 1; length <= n; ++length) {
-        cout << "Length " << length << ":\n";
-        f14_generateStrings(alphabet, "", n, length, theSetOfAllLexicographicalStrings);
-    }
-
-	return;
-}
-
-// Recursive function to generate strings of a specific length
-void f14_generateStrings(const vector<string> alphabet, const string current, const int maxLength, const int currentLength, vector<string> &theSetOfAllLexicographicalStrings) {
-    if (current.length() == currentLength) {
-        cout << current << "-" << endl;
-	theSetOfAllLexicographicalStrings.push_back(current);
-        return;
-    }
-
-    for (string ch : alphabet) {
-        f14_generateStrings(alphabet, current + ch, maxLength, currentLength, theSetOfAllLexicographicalStrings);
-    }
-}
 
 
 
