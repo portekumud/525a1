@@ -46,7 +46,8 @@ int main(int argc, char **argv) {
 	vector<int>::iterator i3_extracted;
 	vector<vector<vector<int>>> allGraphs;
 	vector<vector<int>> allBicoloration;
-	int lexicographyLimit = 3;
+	//int lexicographyLimit = 3;
+	int lexicographyLimit = stoi(*(argv + 2));
 	vector<string> theAlphabet, theSetOfAllLexicographicalStrings;
 	vector<string>::iterator h1;
 

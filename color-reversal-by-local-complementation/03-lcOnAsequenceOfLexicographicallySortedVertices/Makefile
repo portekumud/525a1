@@ -91,7 +91,7 @@ kumud03:
 	bash $(deleteFileReverseDuplicate).sh
 	bash $(deleteFileReverseActual).sh
 	g++ 03-kumud-localComplementation.cpp
-	./a.out ../input/$(graph)
+	./a.out ../input/$(graph) $(lexicographyLimit)
 	ls | grep py >> $(lopf)
 	
 	

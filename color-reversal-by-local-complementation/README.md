@@ -126,6 +126,8 @@ For example, the following is one valid syntax:
 make kumud02 graph=../input/input2 sequence="0 1 2"
 ```
 
+This command will perform `local complementaion` on the `input2` graph using the sequence `0 1 2`.
+
 3. The results are available in the two files, `equalOrNot` and `theoutput`.
 
 4. All output graphs are visible in the `.png` format.
@@ -144,19 +146,22 @@ cd ../03-lcOnAsequenceOfLexicographicallySortedVertices/
 2. Then type the following command to run the implementation.
 
 ```shell
-make -s kumud03 graph=../input/p 
+make -s kumud03 graph=../input/p lexicographyLimit=q
 ```
 
 > [!NOTE]
-> Here `p` is the input graph.
+> Here `p` is the input graph and `q` is the maximum length of the strings being generated lexicographically.
 
 For example, the following is one valid syntax:
 ```shell
-make kumud02 graph=../input/input2"
+make -s kumud03 graph=../input/input4 lexicographyLimit=2
 ```
+This command will generate all lexicographically strings upto length `2` using the alphabet set as the set of vertices of the graph. Then `local complementation` will be performed on those strings sequentially. 
+
 
 3. The results are available in the two files, `equalOrNot` and `theoutput`.
 
 4. All output graphs are visible in the `.png` format.
 
 5. Done.
+
