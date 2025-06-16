@@ -128,7 +128,35 @@ make kumud02 graph=../input/input2 sequence="0 1 2"
 
 3. The results are available in the two files, `equalOrNot` and `theoutput`.
 
-4. Done.
+4. All output graphs are visible in the `.png` format.
+
+5. Done.
 
 ## 2.3 Local complementation using lexicographically sorted strings <a name="s23"></a>
 
+
+1. Execute the following command to change the _present working directory_ as `03-lcOnAsequenceOfLexicographicallySortedVertices`.
+
+```shell 
+cd ../03-lcOnAsequenceOfLexicographicallySortedVertices/
+```
+
+2. Then type the following command to run the implementation.
+
+```shell
+make -s kumud03 graph=../input/p 
+```
+
+> [!NOTE]
+> Here `p` is the input graph.
+
+For example, the following is one valid syntax:
+```shell
+make kumud02 graph=../input/input2"
+```
+
+3. The results are available in the two files, `equalOrNot` and `theoutput`.
+
+4. All output graphs are visible in the `.png` format.
+
+5. Done.
