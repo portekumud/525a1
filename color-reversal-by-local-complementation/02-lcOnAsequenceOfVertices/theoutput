@@ -46,26 +46,26 @@ Now bicoloration:
 
 Graph: 
 0 1 1 
-1 0 0 
-1 0 0 
+1 0 1 
+1 1 0 
 Now bicoloration: 
--1 1 1 
+1 -1 -1 
 ================
 
 
 Graph: 
-0 1 1 
-1 0 0 
-1 0 0 
+0 0 1 
+0 0 1 
+1 1 0 
 Now bicoloration: 
-1 1 1 
+-1 1 -1 
 ================
 
 
 Graph: 
-0 1 1 
-1 0 0 
-1 0 0 
+0 0 1 
+0 0 1 
+1 1 0 
 Now bicoloration: 
 -1 1 1 
 ================
@@ -76,7 +76,7 @@ Graph:
 1 0 1 
 1 1 0 
 Now bicoloration: 
--1 -1 -1 
+1 -1 1 
 ================
 
 
@@ -85,7 +85,7 @@ Graph:
 1 0 1 
 0 1 0 
 Now bicoloration: 
-1 -1 1 
+-1 -1 -1 
 ================
 
 

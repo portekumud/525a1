@@ -128,6 +128,10 @@ make kumud02 graph=../input/input2 sequence="0 1 2"
 
 This command will perform `local complementaion` on the `input2` graph using the sequence `0 1 2`.
 
+Another example is the following command:
+```shell
+make kumud02 graph=../input/input5 sequence="0 1 0 2 0 2 1 2 1"
+```
 3. The results are available in the two files, `equalOrNot` and `theoutput`.
 
 4. All output graphs are visible in the `.png` format.

@@ -3,8 +3,8 @@ python3 graph1-0.py
 python3 graph2-01.py
 python3 graph3-010.py
 python3 graph4-0102.py
-python3 graph5-01021.py
-python3 graph6-010212.py
-python3 graph7-0102121.py
-python3 graph8-01021210.py
-python3 graph9-010212101.py
+python3 graph5-01020.py
+python3 graph6-010202.py
+python3 graph7-0102021.py
+python3 graph8-01020212.py
+python3 graph9-010202121.py

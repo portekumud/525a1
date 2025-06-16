@@ -856,7 +856,7 @@ void f12_checkIdentical(vector<vector<vector<int>>> allGraphs, vector<vector<int
 	for(i3_graphCurrent = allGraphs.begin(), thatBicoloration = allBicoloration.begin(); i3_graphCurrent != allGraphs.end(); i3_graphCurrent++, thatBicoloration++) {
 		vector<vector<int>> graphRHS = *i3_graphCurrent;
 		vector<vector<int>>::iterator iLHS, iRHS;
-
+		checkEqualOrNot = yesEqual;
 		for(iLHS = graphLHS.begin(), iRHS = graphRHS.begin(); iLHS != graphLHS.end(); iLHS++, iRHS++) {
 			vector<int> rowLHS, rowRHS;
 			vector<int>::iterator i4, i5;
