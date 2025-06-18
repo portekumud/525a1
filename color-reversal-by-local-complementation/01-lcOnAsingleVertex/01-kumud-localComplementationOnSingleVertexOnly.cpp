@@ -531,7 +531,7 @@ void g10_drawGraphPNG(vector<vector<int>> myGraph, vector<int> myBicoloration, s
 	file << parameter1;
 	file << "-";
 	file << parameter2;
-	file << ".png')" << endl;
+	file << ".pdf')" << endl;
 
 	file.close();
 

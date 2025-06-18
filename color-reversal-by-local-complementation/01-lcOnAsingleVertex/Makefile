@@ -55,6 +55,20 @@ kumud01:
 	echo "done < allPythonFiles" >> runPython.sh
 	bash runPython.sh
 	bash RUNallPythonFiles 
+	
+	ls | grep pdf >> allPDFFiles
+	echo "while read line; do" >> runPDF.sh
+	echo -n "	echo evince \"" >> runPDF.sh
+	echo -n "$(thisIsDollar)" >> runPDF.sh
+	#echo -n "." >> runPDF.sh
+	echo "line\"  \&>> RUNallPDFFiles.sh" >> runPDF.sh
+	echo "done < allPDFFiles" >> runPDF.sh
+	bash runPDF.sh
+	bash RUNallPDFFiles.sh 
+	
+	
+	
+	
 	#python3 graph0-graphInitial.py 
 	#python3 graph02-afterLocalCom.py 
 	#evince graph01-initial.pdf &

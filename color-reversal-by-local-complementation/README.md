@@ -93,9 +93,8 @@ For example, run `make kumud01 graph=../input/input3 vertex=4` to do _local comp
 -   the _initial graph_, and
 -   the _graph_ after _local complementation_ on the _mentioned vertex_.
 
-and the two graphs are visible.
 
-5. The two graphs should be visible automatically. Altenatively, we can use the following command to view the two graphs:
+5. The two graphs can be viewed accordingly. Altenatively, we can use the following command to view the two graphs:
 
 ```shell
 bash script01-showOutput.sh
