@@ -61,10 +61,10 @@ kumud01:
 	echo -n "	echo evince \"" >> runPDF.sh
 	echo -n "$(thisIsDollar)" >> runPDF.sh
 	#echo -n "." >> runPDF.sh
-	echo "line\"  \&>> RUNallPDFFiles.sh" >> runPDF.sh
+	echo "line\"  \&>> script01-showOutput.sh" >> runPDF.sh
 	echo "done < allPDFFiles" >> runPDF.sh
 	bash runPDF.sh
-	bash RUNallPDFFiles.sh 
+	bash script01-showOutput.sh
 	
 	
 	
