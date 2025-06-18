@@ -169,3 +169,4 @@ This command will generate all lexicographically strings upto length `2` using t
 
 5. Done.
 
+make kumud01 graph=../input/input1 vertex=3
