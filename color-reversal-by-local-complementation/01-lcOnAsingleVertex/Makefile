@@ -2,8 +2,34 @@ graph01=graph01-initial
 graph02=graph02-afterLocalCom
 a=a
 script=script01-showOutput
+thisIsDollar=$
 
 kumud01:
+	> REMOVEunnecessary.sh
+	> toBeremoved.sh
+	> listOfAllFIles
+	> fileReverseDuplicate.sh
+	echo "for file in *; do" >> fileReverseDuplicate.sh
+	echo -n "	if [[ \"" >> fileReverseDuplicate.sh
+	echo -n "$(thisIsDollar)" >> fileReverseDuplicate.sh
+	echo -n "file\" == \"01-kumud-localComplementationOnSingleVertexOnly.cpp\"" >> fileReverseDuplicate.sh
+	echo -n " || \"" >> fileReverseDuplicate.sh
+	echo -n "$(thisIsDollar)" >> fileReverseDuplicate.sh
+	echo "file\" == \"Makefile\" ]]; then" >> fileReverseDuplicate.sh
+	echo "		continue" >> fileReverseDuplicate.sh
+	echo "	fi" >> fileReverseDuplicate.sh
+	echo -n "	echo \"" >> fileReverseDuplicate.sh
+	echo -n "$(thisIsDollar)" >> fileReverseDuplicate.sh
+	echo "file\"" >> fileReverseDuplicate.sh
+	echo "done" >> fileReverseDuplicate.sh
+	bash fileReverseDuplicate.sh >> listOfAllFIles
+	echo "while read line; do" >> toBeremoved.sh
+	echo -n "	echo rm \"" >> toBeremoved.sh
+	echo -n "$(thisIsDollar)" >> toBeremoved.sh
+	echo "line\" >> REMOVEunnecessary.sh" >> toBeremoved.sh
+	echo "done < listOfAllFIles" >> toBeremoved.sh
+	bash toBeremoved.sh
+	bash REMOVEunnecessary.sh
 	#source env01-kumud-localComplementation/bin/activate
 	#python3 -m venv env01-kumud-localComplementation
 	#source env01-kumud-localComplementation/bin/activate
@@ -18,17 +44,26 @@ kumud01:
 	#echo "print(\"The original Graph\") " >> graph01-initial.py
 	#echo "nx.draw_networkx(G) " >> graph01-initial.py
 	#echo "plt.savefig('graph01-initial.png')" >> graph01-initial.py 
+	
 	g++ 01-kumud-localComplementationOnSingleVertexOnly.cpp
 	./a.out ../input/$(graph) $(vertex) 
-	python3 graph01-initial.py 
-	python3 graph02-afterLocalCom.py 
-	evince graph01-initial.pdf &
-	evince graph02-afterLocalCom.pdf &
+	ls | grep py >> allPythonFiles
+	echo "while read line; do" >> runPython.sh
+	echo -n "	echo python3 \"" >> runPython.sh
+	echo -n "$(thisIsDollar)" >> runPython.sh
+	echo "line\" >> RUNallPythonFiles" >> runPython.sh
+	echo "done < allPythonFiles" >> runPython.sh
+	bash runPython.sh
+	bash RUNallPythonFiles 
+	#python3 graph0-graphInitial.py 
+	#python3 graph02-afterLocalCom.py 
+	#evince graph01-initial.pdf &
+	#evince graph02-afterLocalCom.pdf &
 	
-	touch script01-showOutput.sh
-	echo "#!"/"bin"/"bash" > script01-showOutput.sh
-	echo "okular graph01-initial.pdf &" >> script01-showOutput.sh
-	echo "okular graph02-afterLocalCom.pdf &" >> script01-showOutput.sh
+	#touch script01-showOutput.sh
+	#echo "#!"/"bin"/"bash" > script01-showOutput.sh
+	#echo "okular graph01-initial.pdf &" >> script01-showOutput.sh
+	#echo "okular graph02-afterLocalCom.pdf &" >> script01-showOutput.sh
 clean:
 	if [ -f $(a).out ]; then \
 		echo "$(a).out file exists."; \
@@ -71,5 +106,6 @@ clean:
 	else\
 		echo "$(script).sh file does not exist."; \
 	fi
+
 
 
