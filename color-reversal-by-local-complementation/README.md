@@ -59,7 +59,7 @@ The following directories are present.
 -   03-lcOnAsequenceOfLexicographicallySortedVertices/
 
 
-## 2.1 Local complementation at a single vertex <a name="s21"></a>
+## 2.1 Applying `color reversal` at a single vertex <a name="s21"></a>
 
 1.  Execute the following code  to change the _present working directory_ as _01-lcOnAsingleVertex_.
 
@@ -103,7 +103,7 @@ bash script01-showOutput.sh
 6.  We are done here.
 
 
-## 2.2 Local complementation using a sequence of vertices <a name="s22"></a>
+## 2.2 Applying `color reversal` using a sequence of vertices <a name="s22"></a>
 
 1. Execute the following command to change the _present working directory_ as `02-lcOnAsequenceOfVertices`.
 
@@ -137,7 +137,7 @@ make kumud02 graph=../input/input5 sequence="0 1 0 2 0 2 1 2 1"
 
 5. Done.
 
-## 2.3 Local complementation using lexicographically sorted strings <a name="s23"></a>
+## 2.3 Applying `color reversal` using lexicographically sorted strings <a name="s23"></a>
 
 
 1. Execute the following command to change the _present working directory_ as `03-lcOnAsequenceOfLexicographicallySortedVertices`.
