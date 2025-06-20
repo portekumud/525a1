@@ -175,5 +175,3 @@ make  kumud03 graph=../input/input5 lexicographyLimit=9
 5. A detailed log file is available in the <a href="log/"> log</a> directory.
 
 6. Done.
-
-make kumud01 graph=../input/input1 vertex=3
