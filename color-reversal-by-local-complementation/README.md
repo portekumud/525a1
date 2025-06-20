@@ -168,12 +168,12 @@ Another example is the following command which will generate all strings in lexi
 make  kumud03 graph=../input/input5 lexicographyLimit=9
 ```
 
-3. The resultant graphs are available in the <a href="allFilesPNG/"> Hi </a>   `allFilesPNG` directory
+3. The resultant graphs are available in the <a href="allFilesPNG/"> allFilesPNG</a> directory.
 
-3. The results are available in the two files, `equalOrNot` and `theoutput`.
+4. The brief output is available in the <a href="output/"> output</a> directory.
 
-4. All output graphs are visible in the `.png` format.
+5. A detailed log file is available in the <a href="log/"> log</a> directory.
 
-5. Done.
+6. Done.
 
 make kumud01 graph=../input/input1 vertex=3
