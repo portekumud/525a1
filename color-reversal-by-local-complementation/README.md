@@ -168,7 +168,7 @@ Another example is the following command which will generate all strings in lexi
 make  kumud03 graph=../input/input5 lexicographyLimit=9
 ```
 
-3. The resultant graphs are available in the <a href=allFilesPNG/"> Hi </a>   `allFilesPNG` directory
+3. The resultant graphs are available in the <a href="allFilesPNG/"> Hi </a>   `allFilesPNG` directory
 
 3. The results are available in the two files, `equalOrNot` and `theoutput`.
 
