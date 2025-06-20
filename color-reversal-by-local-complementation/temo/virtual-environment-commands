@@ -1,9 +1,0 @@
-python3 -m venv env01-kumud-localComplementation
-
-source env01-kumud-localComplementation/bin/activate
-
-pip install networkx
-pip install matplotlib
-
-
-deactivate
