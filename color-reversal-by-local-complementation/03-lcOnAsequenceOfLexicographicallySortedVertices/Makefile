@@ -14,59 +14,49 @@ deleteFileReverseDuplicate=deleteFileReverseDuplicate
 deleteFileReverseActual=deleteFileReverseActual
 thisIsDollar=$
 kumud03:
-	#source env01-kumud-localComplementation/bin/activate
-	#python3 -m venv env01-kumud-localComplementation
-	#source env01-kumud-localComplementation/bin/activate
-	#pip install networkx
-	#pip install matplotlib
-	#echo "import networkx as nx " > graph01-initial.py
-	#echo "import matplotlib.pyplot as plt " >> graph01-initial.py
-	#echo "G = nx.Graph() " >> graph01-initial.py
-	#echo "plt.figure(figsize =(9, 12)) " >> graph01-initial.py
-	#echo "" >> graph01-initial.py
-	#echo "plt.subplot(211) " >> graph01-initial.py
-	#echo "print(\"The original Graph\") " >> graph01-initial.py
-	#echo "nx.draw_networkx(G) " >> graph01-initial.py
-	#echo "plt.savefig('graph01-initial.png')" >> graph01-initial.py 
-	#echo "" > read.sh
-	#if [ -f $(read) ]; then \
-	#	echo "ok 1"; \
-	#else\
-	#	echo "ok 2"; \
-	#	touch $(read); \
-	#fi
-	
-	
-	
-	
-	#if [ -f $(lopf) ]; then \
-	#	echo "$(lopf) File exists."; \
-	#	rm $(lopf); \
-	#else\
-	#	echo "$(lopf) File does not exist."; \
-	#fi
-	#if [ -f $(wao).sh ]; then \
-	#	echo "$(wao).sh File exists."; \
-	#	rm $(wao).sh; \
-	#else\
-	#	echo "$(wao).sh File does not exist."; \
-	#fi
-	#if [ -f $(fileReverse).sh ]; then \
-	#	echo "$(fileReverse).sh File exists."; \
-	#	rm $(fileReverse).sh; \
-	#else\
-	#	echo "$(fileReverse).sh File does not exist."; \
-	#fi
-	
+	# going to different directory python
+	> part1.sh
+	> part2.sh
+	> pythonFIlesInDifferentDirectory
+	ls ../allFilesPython/ | grep py >> pythonFIlesInDifferentDirectory
+	echo "while read line; do" >> part2.sh
+	echo -n "	echo rm ../allFilesPython/\"" >> part2.sh
+	echo -n "$(thisIsDollar)" >> part2.sh
+	echo "line\" >> part1.sh" >> part2.sh
+	echo "done < pythonFIlesInDifferentDirectory" >> part2.sh
+	bash part2.sh 
+	bash part1.sh
+	# going to different directory: log
+	> part3.sh
+	> part4.sh
+	> logFIlesInDifferentDirectory
+	ls ../log/ >> logFIlesInDifferentDirectory
+	echo "while read line; do" >> part4.sh
+	echo -n "	echo rm ../log/\"" >> part4.sh
+	echo -n "$(thisIsDollar)" >> part4.sh
+	echo "line\" >> part3.sh" >> part4.sh
+	echo "done < logFIlesInDifferentDirectory" >> part4.sh
+	bash part4.sh 
+	bash part3.sh
+	# going to different directory: png
+	> part5.sh
+	> part6.sh
+	> pngFIlesInDifferentDirectory
+	ls ../allFilesPNG/ >> pngFIlesInDifferentDirectory
+	echo "while read line; do" >> part6.sh
+	echo -n "	echo rm ../allFilesPNG/\"" >> part6.sh
+	echo -n "$(thisIsDollar)" >> part6.sh
+	echo "line\" >> part5.sh" >> part6.sh
+	echo "done < pngFIlesInDifferentDirectory" >> part6.sh
+	bash part6.sh 
+	bash part5.sh
+	# On the present directory	
 	> $(fileReverseDuplicate).sh
 	> $(lopf).sh	
 	> $(loafe).sh
 	echo "1111111111111111111111111"	
 	> $(deleteFileReverseDuplicate).sh
 	> $(deleteFileReverseActual).sh
-	> equalOrNot	
-	> theoutput	
-	
 	echo "for file in *; do" >> $(fileReverseDuplicate).sh
 	echo -n "	if [[ \"" >> $(fileReverseDuplicate).sh
 	echo -n "$(msg1)" >> $(fileReverseDuplicate).sh
@@ -90,39 +80,37 @@ kumud03:
 	echo "done < $(loafe).sh" >> $(deleteFileReverseDuplicate).sh
 	bash $(deleteFileReverseDuplicate).sh
 	bash $(deleteFileReverseActual).sh
+	
 	g++ 03-kumud-localComplementation.cpp
 	./a.out ../input/$(graph) $(lexicographyLimit)
-	ls | grep py >> $(lopf)
-	
-	
-	echo "while read line; do" >> runPythonDuplicate.sh
-	echo -n "	echo python3 \"" >> runPythonDuplicate.sh
-	echo -n "$(thisIsDollar)" >> runPythonDuplicate.sh
-	echo "line\" >> runPythonActual.sh" >> runPythonDuplicate.sh
-	echo "done < listOfPythonFiles" >> runPythonDuplicate.sh
-	bash runPythonDuplicate.sh
-	bash runPythonActual.sh
+	###########################################################
 	#cat equalOrNot
-
+	cd ../allFilesPNG/
+	#python3 ../allFilesPython/graph03-2.py 
+	> part7.sh
+	> part8.sh
+	> pythonFIlesInDifferentDirectory
+	ls ../allFilesPython/ | grep py >> pythonFIlesInDifferentDirectory
+	echo "while read line; do" >> part8.sh
+	echo -n "	echo python3 ../allFilesPython/\"" >> part8.sh
+	echo -n "$(thisIsDollar)" >> part8.sh
+	echo "line\" >> part7.sh" >> part8.sh
+	echo "done < pythonFIlesInDifferentDirectory" >> part8.sh
+	bash part8.sh 
+	bash part7.sh
+		
 	
-	
-	
-	#ls | grep .py >> $(lopf)
-	#echo "while read line; do" >> $(file1)
-	##rm j.txt
-	#echo -n "	echo python3 " >> $(file1)
-	#echo -n "\"" >> $(file1)
-	#echo -n "$(msg1)" >> $(file1)
-	#echo -n "line" >> $(file1)
-	#echo -n "\"" >> $(file1)
-	#echo -n " >> " >> $(file1)
-	#echo "wao.sh" >> $(file1)
-	#echo "	done < listOfPythonFiles" >>$(file1)
-	#bash read.sh
-	#bash wao.sh
-	
-	
-	
+	> part9.sh
+	> part10.sh
+	> pngFIlesInDifferentDirectory
+	ls | grep .png >> pngFIlesInDifferentDirectory
+	echo "while read line; do" >> part10.sh
+	echo -n "	echo mv \"" >> part10.sh
+	echo -n "$(thisIsDollar)" >> part10.sh
+	echo "line\" ../allFilesPNG/ >> part9.sh" >> part10.sh
+	echo "done < pngFIlesInDifferentDirectory" >> part10.sh
+	bash part10.sh 
+	bash part9.sh
 	
 	
 	
