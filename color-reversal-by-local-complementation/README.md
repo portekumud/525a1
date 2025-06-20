@@ -9,9 +9,9 @@ This directory contains implementation of local complementation.
     -   1.1 [Prerequisite for the first time execution](#s11)
     -   1.2 [Prerequisite for the second time onwards](#s12)
 2.  [List of directories](#s2)
-    -   2.1 [Local complementation at a single vertex](#s21)
-    -   2.2 [Local complementation using a sequence of vertices](#s22)
-    -   2.3 [Local complementation using lexicographically sorted strings](#s23)
+    -   2.1 [Applying `color reversal` at a single vertex](#s21)
+    -   2.2 [Applying `color reversal` using a sequence of vertices](#s22)
+    -   2.3 [Applying `color reversal` using lexicographically sorted strings](#s23)
 
 ---
 
