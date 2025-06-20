@@ -159,8 +159,16 @@ For example, the following is one valid syntax:
 ```shell
 make -s kumud03 graph=../input/input4 lexicographyLimit=2
 ```
-This command will generate all lexicographically strings upto length `2` using the alphabet set as the set of vertices of the graph. Then `local complementation` will be performed on those strings sequentially. 
+This command will generate all lexicographically strings upto length `2` using the alphabet set as the set of vertices of the graph. Then `color inversion` will be performed on those strings sequentially. 
 
+
+Another example is the following command which will generate all strings in lexicographically order upto length 9 and `color inversion` is applied on all of them sequentially using the input5 graph.
+
+```shell
+make  kumud03 graph=../input/input5 lexicographyLimit=9
+```
+
+3. The resultant graphs are available in the <a href=./allFilesPNG/"> Hi </a>   `allFilesPNG` directory
 
 3. The results are available in the two files, `equalOrNot` and `theoutput`.
 

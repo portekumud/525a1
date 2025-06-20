@@ -14,6 +14,11 @@ deleteFileReverseDuplicate=deleteFileReverseDuplicate
 deleteFileReverseActual=deleteFileReverseActual
 thisIsDollar=$
 kumud03:
+	echo "make  kumud03 graph=../input/input5 lexicographyLimit=9"
+	mkdir -p ../allFilesPNG
+	mkdir -p ../allFilesPython
+	mkdir -p ../log
+	mkdir -p ../output
 	# going to different directory python
 	> part1.sh
 	> part2.sh
@@ -168,4 +173,5 @@ clean:
 	else\
 		echo "$(graph02).py File does not exist."; \
 	fi
+
 
